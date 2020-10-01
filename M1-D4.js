@@ -35,6 +35,15 @@ the specified
 number is greater than 19.
 */
 
+const crazyDiff = (x, y = 19) => {
+  if (x > 19) {
+    return 3 * Math.abs(x - y);
+  } else {
+    return Math.abs(x - y);
+  }
+};
+
+console.log(crazyDiff(30));
 /* EXERCISE 4
 Write a function "boundary" which accept an integer N and returns true if N is within 20 and 100 (included) or equal to 400.
 */
