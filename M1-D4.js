@@ -145,8 +145,16 @@ console.log(cutString("Ermal Asllani"));
 Write a function "giveMeRandom" which accepts a number n and returns an array containing n random numbers between 0 and 10
 */
 
-/* WRITE YOUR CODE HERE */
+const giveMeRandom = (n) => {
+  let myArray = [];
 
+  for (i = 0; i < n; i++) {
+    myArray.push(Math.floor(Math.random() * 11));
+  }
+  return myArray;
+};
+
+console.log(giveMeRandom(10));
 /* WHEN YOU ARE FINISHED
 Commit and push the code to your personal GitHub repository and share the link to your commit with your tutor.
 */
