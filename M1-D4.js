@@ -74,8 +74,19 @@ Write a function "check3and7" which accepts a positive number and check if it is
 HINT: Module Operator
 */
 
-/* WRITE YOUR CODE HERE */
+const check3and7 = (X = 0) => {
+  if (X > 0) {
+    if (X % 3 === 0 || X % 7 === 0) {
+      return "Is a multiple of 3 or a multiple of 7: " + true;
+    } else {
+      return "Is a multiple of 3 or a multiple of 7: " + false;
+    }
+  } else {
+    return "Number is negative";
+  }
+};
 
+console.log(check3and7(3));
 /* EXERCISE 7
 Write a function "reverseString" to reverse programmatically a given string (es.: Strive => evirtS).
 */
