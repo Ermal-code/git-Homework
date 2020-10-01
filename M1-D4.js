@@ -18,6 +18,15 @@ console.log(area(2, 3));
 Write a function "crazySum" which receives two given integers. If the two values are same, then returns triple their sum.
 */
 
+const crazySum = (a, b) => {
+  if (a === b) {
+    return 3 * (a + b);
+  } else {
+    return a + b;
+  }
+};
+
+console.log(crazySum(3, 3));
 /* EXERCISE 3
 Write a function "crazyDiff" that computes the 
 absolute difference between a given number and 19. 
