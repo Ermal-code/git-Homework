@@ -35,11 +35,11 @@ the specified
 number is greater than 19.
 */
 
-const crazyDiff = (x, y = 19) => {
+const crazyDiff = (x) => {
   if (x > 19) {
-    return 3 * Math.abs(x - y);
+    return 3 * Math.abs(x - 19);
   } else {
-    return Math.abs(x - y);
+    return Math.abs(x - 19);
   }
 };
 
@@ -108,18 +108,14 @@ Write a function "upperFirst" to capitalize the first letter of each word of a g
 */
 
 //// I know this is wrong but i don't want to be stuck here !!!
-function findFirst(str) {
-  let match = /[a-zA-z]/.exec(str);
-  if (match) return match.index;
-  else null;
-}
 
 function upperFirst(str) {
-  return typeof str === "string"
-    ? str.slice(0, findFirst(str)) +
-        str.charAt(findFirst(str)).toUpperCase() +
-        str.substr(findFirst(str) + 1)
-    : "Please input a string.";
+  let arrayOfWords = str.split(" ");
+  for (i = 0; i < arrayOfWords.length; i++) {
+    let findFirst = arrayOfWords[i].charAt(0).toUpperCase();
+    arrayOfWords[i] = findFirst + arrayOfWords[i].substr(1);
+  }
+  return arrayOfWords.join(" ");
 }
 
 console.log(upperFirst("ermal asllani"));
