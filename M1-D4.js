@@ -107,14 +107,40 @@ console.log(reverseString("Google"));
 Write a function "upperFirst" to capitalize the first letter of each word of a given string passed as parameter
 */
 
-/* WRITE YOUR CODE HERE */
+//// I know this is wrong but i don't want to be stuck here !!!
+function findFirst(str) {
+  let match = /[a-zA-z]/.exec(str);
+  if (match) return match.index;
+  else null;
+}
+
+function upperFirst(str) {
+  return typeof str === "string"
+    ? str.slice(0, findFirst(str)) +
+        str.charAt(findFirst(str)).toUpperCase() +
+        str.substr(findFirst(str) + 1)
+    : "Please input a string.";
+}
+
+console.log(upperFirst("ermal asllani"));
 
 /* EXERCISE 9
 Write a function "cutString" to create a new string without the first and last character of a given string.
 */
 
-/* WRITE YOUR CODE HERE */
+const cutString = (str = "") => {
+  myArray = str.split("");
 
+  myArray.splice(0, 1);
+
+  myArray.pop();
+
+  joinArray = myArray.join("");
+
+  return joinArray;
+};
+
+console.log(cutString("Ermal Asllani"));
 /* EXERCISE 10
 Write a function "giveMeRandom" which accepts a number n and returns an array containing n random numbers between 0 and 10
 */
