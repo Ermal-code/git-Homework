@@ -442,13 +442,11 @@ const searchAndDivide = (S) => {
       nonMatch.push(movies[i]);
     }
   }
-  obj = {};
-  Object.assign(obj["match"], matchmovie);
-  Object.assign(obj["noMatch"], nonMatch);
-  return obj;
+
+  return { matchmovie, nonMatch };
 };
 
-console.log(searchMovie("Av"));
+console.log(searchAndDivide("Av"));
 
 /* Ex.20
    Write the function DeleteX that receives a number and returns an array without the element in that position
