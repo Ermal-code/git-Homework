@@ -185,18 +185,18 @@ console.log(rollTheDice(4));
 /* Ex.9
    Write the function HowManyDays that receives a Date and return the number of days that has passed since that day.
 */
-
-const howManyDays = (D = new Date()) => {
-  date = new Date();
+const howManyDays = (D) => {
+  let date = new Date();
+  A = new Date(D);
   let today =
-    date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDay();
+    date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+  today = new Date(today);
 
-  const diffTime = Math.abs(today - D);
+  const diffTime = Math.abs(today - A);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 };
-console.log(howManyDays("2019/10/02"));
-
+console.log(howManyDays("10/2/2015"));
 /* Ex.10
    Write the function IsTodayMyBDay that returns true if it's your birthday, false otherwise
 */
@@ -204,7 +204,8 @@ const isTodayMyBDay = () => {
   bDay = new Date("18/2");
   date = new Date();
   today = date.getDate() + "/" + (date.getMonth() + 1);
-  if (today === bDay) {
+
+  if (today == bDay) {
     console.log(true);
   } else console.log(false);
   return today;
@@ -330,7 +331,17 @@ const movies = [
 
 /* Ex.11
    Write the function DeleteProp that receives an object and a string, and returns the object after deleting the property with that given name
-*/
+
+const DeleteProp = (O, S) => {
+  let mTitles;
+  for (let i = 0; i < movies.length; i++) {
+    if (O === movies[{ i }] && S === movies.keys) {
+      delete movies[i].keys === S;
+      mTitles = movies[{ i }];
+    }
+  }
+  return mTitles;
+};
 
 /* Ex.12 
     Write the function OlderMovie that finds the older movie in the array
@@ -392,13 +403,17 @@ console.log(onlyThisMillennium());
 */
 
 const getMovieById = (ID) => {
+  let correctID;
   for (let i = 0; i < movies.length; i++) {
     if (movies[i].imdbID === ID) {
-      return movies[i];
+      correctID = movies[i];
+    } else {
+      correctId = "Wrong ID";
     }
   }
+  return correctID;
 };
-console.log(getMovieById("tt4154756"));
+console.log(getMovieById("tt4154796"));
 /* Ex.17
     Write the function SumYears that returns the sum of the years the movie has been produced
 */
@@ -469,17 +484,13 @@ console.log(deletX(2));
   ***
 */
 const halfTree = (H) => {
-  a = "*";
+  const char = "*";
   for (i = 1; i <= H; i++) {
-    for (j = 1; j <= 2 * i - 1; j++) {
-      console.log("*");
-    }
-
-    console.log("<br>");
+    console.log(char.repeat(i));
   }
-  return a;
 };
-console.log(halfTree(3));
+
+halfTree(6);
 /* Ex.22 
   Create a function Tree that receives the height and creates an "*" tree with that height
   Example: 
@@ -488,9 +499,22 @@ console.log(halfTree(3));
    *** 
   *****
 */
+const fullTree = (H) => {
+  const char = "*";
+  const space = " ";
+  for (i = 1; i <= H; i++) {
+    console.log(space.repeat(H - i) + char.repeat(i * 2 - 1));
+  }
+};
+fullTree(10);
 
 /* Ex.23
   Create a function IsItPrime that receives a number and return true if the number is a prime number
 */
+const isItPrime = (num) => {
+  for (let i = 2; i < num; i++) if (num % i === 0) return false;
+  return num > 1;
+};
 
+console.log(isItPrime(41));
 /* Movies array is an example array, used for the exs. Don't change it :)  */
