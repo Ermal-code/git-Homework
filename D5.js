@@ -329,20 +329,6 @@ const movies = [
   },
 ];
 
-/* Ex.11
-   Write the function DeleteProp that receives an object and a string, and returns the object after deleting the property with that given name
-
-const DeleteProp = (O, S) => {
-  let mTitles;
-  for (let i = 0; i < movies.length; i++) {
-    if (O === movies[{ i }] && S === movies.keys) {
-      delete movies[i].keys === S;
-      mTitles = movies[{ i }];
-    }
-  }
-  return mTitles;
-};
-
 /* Ex.12 
     Write the function OlderMovie that finds the older movie in the array
 */
@@ -472,6 +458,15 @@ const deletX = (N) => {
   return movies;
 };
 console.log(deletX(2));
+
+/* Ex.11
+   Write the function DeleteProp that receives an object and a string, and returns the object after deleting the property with that given name
+*/
+const DeleteProp = (O, S) => {
+  delete O[S];
+  return O;
+};
+console.log(DeleteProp(movies[0], "Title"));
 
 // JS Advanced
 
