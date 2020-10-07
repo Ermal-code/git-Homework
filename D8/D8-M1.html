@@ -45,7 +45,12 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
 
     <hr />
 
-    <input type="color" placeholder="Color" id="colorPicker" />
+    <input
+      type="color"
+      placeholder="Color"
+      id="colorPicker"
+      onchange="changeTaskBackgroundColor()"
+    />
     <input
       type="button"
       value="Change task background"

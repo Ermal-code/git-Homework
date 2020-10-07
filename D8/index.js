@@ -57,7 +57,9 @@ getTasksAsArray();
 const changeTaskBackgroundColor = () => {
   let colpick = document.querySelector("#colorPicker");
   let liElement = document.querySelectorAll("#myTaskList li");
-  liElement.style.background = colpick.value;
+  for (i = 0; i < liElement.length; i++) {
+    liElement[i].style.backgroundColor = colpick.value;
+  }
 };
 /* EXTRA */
 
