@@ -133,14 +133,13 @@ inputCol.onclick = function () {
       When the user mouse goes on a table cell (not the image one) the font size must increase.
       HINT use mouseenter / mouseleave events
   */
-const makeThemMagnifiable = function () {};
+const makeThemMagnifiable = function () {
+  let tablecont = document.querySelectorAll();
+};
 /* EXERCISE 10
       Add a button to toggle all the product images (toggle => if visible, hide, if not visible, show)
   */
 const toggleShowImages = function () {};
-
-//##### EXTRA
-
 /* EXERCISE 11
       Make the heading of the page change color radomly every time the user clicks on it
       */
