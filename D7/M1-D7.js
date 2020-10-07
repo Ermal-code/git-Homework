@@ -112,8 +112,22 @@ inputDel.onclick = function () {
 /* EXERCISE 8
       Write a function to make the background of every UL green (button)
   */
-const paintItGreen = function () {};
+let inputCol = document.createElement("BUTTON");
+inputCol.innerHTML = "Change color!";
+inputCol.classList.add("button1");
+let referenceNode1 = document.querySelectorAll(".button1")[2];
+referenceNode1.after(inputCol);
 
+const paintItGreen = function () {
+  let ulElements = document.querySelectorAll(".container1 ul");
+  for (i = 0; i < ulElements.length; i++) {
+    ulElements[i].style.backgroundColor = "green";
+  }
+};
+
+inputCol.onclick = function () {
+  paintItGreen();
+};
 /* EXERCISE 9
       Add a "magnifier function" to the table.
       When the user mouse goes on a table cell (not the image one) the font size must increase.
