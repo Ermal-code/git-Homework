@@ -71,3 +71,15 @@ const changeTaskBackgroundColor = () => {
                - Break the code into many function for semplicity 
                - Reuse the functions previously created
             */
+const bubblesort = () => {
+  let tasks = document.querySelectorAll("#myTaskList li");
+  let myArray = [];
+  for (let i = 0; i < tasks.length; i++) {
+    myArray.push(tasks[i].innerText);
+  }
+  myArray.sort();
+
+  for (let i = 0; i < tasks.length; i++) {
+    tasks[i].innerText = myArray[i];
+  }
+};
