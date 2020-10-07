@@ -10,7 +10,7 @@ window.onload = function () {
       Write a function to change the Title of the page in something else (execute the function in browser console)
   */
 const changeTitle = function (newTitle) {
-  pTitle = document.querySelector("title");
+  let pTitle = document.querySelector("title");
   pTitle.innerText = newTitle;
 };
 
@@ -50,27 +50,39 @@ const removeClassFromTitle = function () {
   Write a function to change the text of only the p which are child of a div (execute the function by assigning it to a button's click event)
   */
 const changePContent = function () {
-  element = document.querySelectorAll("div.testclass");
-  changPharagraf = element[0];
+  let element = document.querySelectorAll("div.testclass");
+  let changPharagraf = element[0];
   changPharagraf.innerText = "Ermal";
 };
-changePContent();
+
 /* EXERCISE 5
       Write a function to change the list title (you can use previous day's textarea as input or create a new text input field to grab the content)
   */
-const changeListTitle = function (content) {};
+const changeListTitle = function (content) {
+  let changh1 = document.querySelector("#listTitle");
+  changh1.innerHTML = content;
+};
+
 /* EXERCISE 6
        Write a function to add a new item ONLY to the second list (create an input field + add button)
   */
+
+let inputli = document.createElement("textarea");
+inputli.classList.add("comment1");
+document.querySelector("div.container1").appendChild(inputli);
+
+let inputbut = document.createElement("BUTTON");
+inputbut.innerHTML = "Click me to add!";
+inputbut.classList.add("button1");
+document.querySelector("div.container1").appendChild(inputbut);
+
 const addToTheSecond = function (content) {
-  inputli = document.createElement["textarea"];
-
-  inputbut = document.createElement("BUTTON");
-  inputbut.innerHTML = "Click me";
-
-  document.querySelector("ul#secondList").appendChild(inputli);
-  document.querySelector("ul#secondList").appendChild(inputbut);
+  listel = document.createElement("li");
+  listel.innerHTML = content;
+  document.querySelector("secondList").appendChild(listel);
 };
+inputbut.onclick = addToTheSecond(document.querySelector("comment1").value);
+
 /* EXERCISE 7
       Write a function to make the first UL disappear (button)
   */
