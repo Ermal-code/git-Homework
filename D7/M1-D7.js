@@ -79,10 +79,12 @@ document.querySelector("div.container1").appendChild(inputbut);
 const addToTheSecond = function (content) {
   listel = document.createElement("li");
   listel.innerHTML = content;
-  document.querySelector("secondList").appendChild(listel);
+  document.querySelector("#secondList").appendChild(listel);
 };
-inputbut.onclick = addToTheSecond(document.querySelector("comment1").value);
-
+inputbut.onclick = function () {
+  addToTheSecond(document.querySelector(".comment1").value);
+  document.querySelector(".comment1").value = "";
+};
 /* EXERCISE 7
       Write a function to make the first UL disappear (button)
   */

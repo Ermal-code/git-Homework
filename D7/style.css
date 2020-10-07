@@ -20,7 +20,7 @@
   height: 150px;
   width: 40%;
 }
-.comment1{
+.comment1 {
   border-radius: 10px;
   display: block;
   margin-top: 10px;
@@ -48,6 +48,6 @@
   font-size: 20px;
 }
 
-.mystyleh1{
-	color :red;
+.mystyleh1 {
+  color: red;
 }
