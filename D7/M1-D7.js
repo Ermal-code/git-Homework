@@ -52,7 +52,7 @@ const removeClassFromTitle = function () {
 const changePContent = function () {
   let element = document.querySelectorAll("div.testclass");
   let changPharagraf = element[0];
-  changPharagraf.innerText = "Ermal";
+  changPharagraf.innerText = "Why did you change me :S !!";
 };
 
 /* EXERCISE 5
@@ -88,7 +88,27 @@ inputbut.onclick = function () {
 /* EXERCISE 7
       Write a function to make the first UL disappear (button)
   */
-const firstUlDisappear = function () {};
+let inputDel = document.createElement("BUTTON");
+inputDel.innerHTML = "Click me to disappear!";
+inputDel.classList.add("button1");
+let referenceNode = document.querySelector("#addbutton1");
+referenceNode.after(inputDel);
+
+const firstUlDisappear = function () {
+  let firstUl = document.querySelector("#firstList");
+  let displaySet = firstUl.style.visibility;
+  if (displaySet == "visible") {
+    firstUl.style.visibility = "hidden";
+    inputDel.innerHTML = "Show ME!";
+  } else {
+    firstUl.style.visibility = "visible";
+    inputDel.innerHTML = "Click me to disappear!";
+  }
+};
+
+inputDel.onclick = function () {
+  firstUlDisappear();
+};
 /* EXERCISE 8
       Write a function to make the background of every UL green (button)
   */
