@@ -79,7 +79,11 @@ document.querySelector("div.container1").appendChild(inputbut);
 const addToTheSecond = function (content) {
   listel = document.createElement("li");
   listel.innerHTML = content;
-  document.querySelector("#secondList").appendChild(listel);
+  if (listel.innerHTML !== "") {
+    document.querySelector("#secondList").appendChild(listel);
+  } else {
+    console.log("Nothing has been typed");
+  }
 };
 inputbut.onclick = function () {
   addToTheSecond(document.querySelector(".comment1").value);
@@ -133,9 +137,7 @@ inputCol.onclick = function () {
       When the user mouse goes on a table cell (not the image one) the font size must increase.
       HINT use mouseenter / mouseleave events
   */
-const makeThemMagnifiable = function () {
-  let tablecont = document.querySelectorAll();
-};
+const makeThemMagnifiable = function () {};
 /* EXERCISE 10
       Add a button to toggle all the product images (toggle => if visible, hide, if not visible, show)
   */
