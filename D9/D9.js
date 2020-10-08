@@ -41,8 +41,5 @@ window.onload = function () {
         num[i].classList.add("selected");
       }
     }
-    if (selected) {
-      selected.classList.remove("selected");
-    }
   };
 };
