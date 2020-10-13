@@ -93,10 +93,11 @@ body {
 .shame {
   background-color: rgba(198, 201, 189, 0.5);
   border-radius: 5px;
+  align-items: center;
 }
 .shame ul {
-  margin-left: 25%;
   color: #f8f9fa;
+  text-align: center;
   list-style: none;
   padding: 20px;
 }
@@ -105,9 +106,57 @@ body {
   font-size: 24px;
   font-weight: bold;
 }
-.shame h1 {
+
+.favoritE {
+  width: 80%;
+  background-color: rgba(7, 114, 255, 0.2);
+  border-radius: 5px;
+}
+.favoritE:hover {
+  border: 1px solid #0772ff;
+}
+.favoritE img {
+  margin: 1.5rem;
+  border-radius: 15px;
+}
+
+.favoritE h2,
+.favoritE h3 {
+  color: #f8f9fa;
+  text-align: center;
+  border-bottom: 2px solid #04203b;
+}
+.favoritE p {
+  color: #f8f9fa;
+  font-size: 20px;
   padding: 10px;
-  padding-left: 30px;
+  padding-top: 15px;
+}
+
+.favoritE li {
+  font-size: 20px;
+  color: #f8f9fa;
+  border-bottom: 2px solid #04203b;
+  padding: 10px;
+  margin-top: 5px;
+  align-items: center;
+}
+.favoritE img {
+  width: 13rem;
+  height: 11.5rem;
+  border-radius: 30%;
+  margin: 20px 25%;
+}
+.favoritE td {
+  color: #f8f9fa;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.main-footer {
+  background-color: #262729;
+  color: #f8f9fa;
+  box-shadow: inset 0px 10px 20px black;
 }
 @media (max-width: 600px) {
   .albums img {
@@ -119,5 +168,11 @@ body {
   }
   .genre {
     height: 30%;
+  }
+
+  .favoritE img {
+    width: 7rem;
+    height: 7rem;
+    margin-left: 33%;
   }
 }
