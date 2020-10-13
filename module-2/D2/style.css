@@ -1,0 +1,123 @@
+body {
+  background-color: #343a40;
+  font-family: "Poppins", sans-serif;
+}
+.albums {
+  width: 80%;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+.albums:hover {
+  border: 3px solid #17a2b8;
+}
+.albums img {
+  width: 10rem;
+  height: 9rem;
+  margin: 3rem;
+  border-radius: 5px;
+}
+
+.albums h2 {
+  color: #17a2b8;
+}
+.albums p {
+  color: #343a40;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.genre {
+  width: 100%;
+  height: 25%;
+  padding-top: 1rem;
+  background-color: #17a2b8;
+  margin: 4rem 0;
+  border-radius: 5px;
+}
+.genre:hover {
+  border: 2px solid #343a40;
+}
+.titles {
+  margin-left: 0;
+  width: 100%;
+  height: 7rem;
+}
+.titles h2,
+.titles h3 {
+  width: 100%;
+  padding: 0;
+}
+
+.reviewS {
+  width: 80%;
+  background-color: rgba(7, 114, 255, 0.2);
+  border-radius: 5px;
+}
+.reviewS:hover {
+  border: 1px solid #0772ff;
+}
+.reviewS img {
+  margin: 1.5rem;
+  border-radius: 15px;
+}
+
+.reviewS h2,
+.reviewS h3 {
+  color: #f8f9fa;
+  padding-left: 30px;
+}
+.reviewS p {
+  color: #f8f9fa;
+  font-size: 26px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.reviewS ul {
+  padding: 0;
+}
+.reviewS a {
+  text-decoration: none;
+}
+.reviewS li {
+  list-style: none;
+  font-size: 22px;
+  color: #f8f9fa;
+  border-bottom: 2px solid #04203b;
+  padding: 10px;
+  margin-top: 5px;
+  align-items: center;
+}
+.star {
+  color: rgba(7, 114, 255, 0.7);
+}
+.shame {
+  background-color: rgba(198, 201, 189, 0.5);
+  border-radius: 5px;
+}
+.shame ul {
+  margin-left: 25%;
+  color: #f8f9fa;
+  list-style: none;
+  padding: 20px;
+}
+.shame li {
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.shame h1 {
+  padding: 10px;
+  padding-left: 30px;
+}
+@media (max-width: 600px) {
+  .albums img {
+    width: 7rem;
+    height: 7rem;
+  }
+  .albums {
+    width: 100%;
+  }
+  .genre {
+    height: 30%;
+  }
+}
