@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #343a40;
+      }
+      .albums {
+        width: 80%;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+      .albums:hover {
+        border: 3px solid #17a2b8;
+      }
+      .albums img {
+        width: 12rem;
+        height: 11rem;
+        margin: 2rem;
+      }
+      .albums h3,
+      .albums h2 {
+        text-align: center;
+      }
+      .albums h2 {
+        color: #17a2b8;
+      }
+      .albums p {
+        color: #343a40;
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 30px;
+      }
+    </style>
+
+    <title>My Music</title>
+  </head>
+  <body>
+    <div class="container-lg bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" style="font-size: 1.5rem" href="#"
+              >Favorite Albums<span class="sr-only">(current)</span></a
+            >
+            <a class="nav-link" style="font-size: 1.5rem" href="#">Reviews</a>
+            <a class="nav-link" style="font-size: 1.5rem" href="#"
+              >Hall of shame</a
+            >
+          </div>
+        </div>
+      </nav>
+      <h1 class="text-light ml-5">Favorite Albums</h1>
+      <section class="row">
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/ledZeppelin.jpg" />
+
+          <h3 class="text-dark mx-5">MotherShip</h3>
+
+          <h2>Led Zeppelin</h2>
+          <p>Rock<br />136:18 minutes</p>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/kendricLamar.jpg" />
+          <h3 class="text-dark mx-5">Good Kid M.A.A.D. City</h3>
+          <h2>Kendrick Lamar</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/eminem.jpg" />
+          <h3 class="text-dark mx-5">The Eminem Show</h3>
+          <h2>Eminem</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/actionBronson.jpeg" />
+          <h3 class="text-dark mx-5">Blue Chips</h3>
+          <h2>Action Bronson</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/Action_Bronson_Mr._Wonderful.jpg" />
+          <h3 class="text-dark mx-5">Mr.Wonderful</h3>
+          <h2>Action Bronson</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/pinkFloyd.jpg" />
+          <h3 class="text-dark mx-5">The Dark Side Of The Moon</h3>
+          <h2>Pink Floyd</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/Marshall-Mathers-LP-1024x1024.jpg" />
+          <h3 class="text-dark mx-5">The Marshall Mathers LP</h3>
+          <h2>Eminem</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/2pac.jpg" />
+          <h3 class="text-dark mx-5">All Eyez On Me</h3>
+          <h2>2pac</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/sbtrkt.jpg" />
+          <h3 class="text-dark mx-5">Wonder Where We Land</h3>
+          <h2>Sbtrkt</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/Nirvana.jpg" />
+          <h3 class="text-dark mx-5">Nevermind</h3>
+          <h2>Nirvana</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/AcDc.jpg" />
+          <h3 class="text-dark mx-5">Let There Be Rock</h3>
+          <h2>AC/DC</h2>
+        </div>
+        <div class="albums col-lg-3 col-md-4 col-6 mt-3">
+          <img src="img/theBeatles.jpg" />
+          <h3 class="text-dark mx-5">Let It Be</h3>
+          <h2>The Beatles</h2>
+        </div>
+      </section>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
