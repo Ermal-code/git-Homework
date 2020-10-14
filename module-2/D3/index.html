@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+        ASSIGNMENT RULES
+        - This is exercise should be done in couples
+        - Implement one exercise each
+        - We suggest you to use Zoom or Google Hangouts to speak to each other
+        - The solution must be pushed to the repository and be available for the tutors by the end of the day
+        - You can ask for tutor's help
+        - You can google / use StackOverflow BUT we suggest you to use just the material provided
+        - To test the page, just open it with your default browser.
+        - Use Bootstrap4 classes to render the page.
+        - Use correctly containers and rows in order to have a great display
+        You are implementing a website for a Travel Agency.
+        In the page you can add all the destination you'd like to go in the next future!
+        Ex 1) Implement a navigation bar, connected to all the sections of the page. 
+        Ex 2) Add a logo into the navigation bar 
+        Ex 3) Add a Jumbotron section in which you present name and claim of the tour operator
+        Ex 4) Implement the "Deal of the Week" section. In this section you'll display 4 destinations.
+         In this section you should have:
+            - 4 destinations per row when the screen is very large
+            - 3 destinations per row when you are on a tablet (or a smaller window)
+            - 2 destinations per row when you are on a small screen
+        Ex 5) Implement the "Welcome Summer" section. In this section you'll propose 6 destinations
+            In this section you should have:
+                - 6 destinations per row when the screen is very large
+                - 3 destinations per row when you are on a tablet (or a smaller window)
+                - 2 destinations per row when you are on a small screen
+        
+        Ex 6) Implement a "Deal of the day" section. In this section you'll have:
+            - 66% of the page with a picture of the destination
+            - 33% with Name, dates, price and a short description
+        Ex 7) Make the "Deal of the day" section disappear when the user is mobile
+        Ex 8) Add to the Welcome Summer destinations a large shadow
+        Ex 9) Create a section Last Minute, in which you'll display the pictures from the destinations as Cards
+        Ex 10) Create a "Testimonial" section, in which the user can find several feedback from fake customers
+        Ex 11) Create a footer with the company information and a button "contact us"
+        Ex 11) Create a button next to each section to collapse and reopen the given section
+        Ex 12) Create a method that counts the number of "travels" on the page
+        Ex 13) Create a modal view with a message and a email field
+        Ex 14) When the user clicks on "contact us" the modal is displayed
+        Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers
+        Ex 16) Create a function to delete all "cards" from the page
+      -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>My Music</title>
+  </head>
+  <body>
+    <div class="container-lg">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <img
+              src="https://st.depositphotos.com/2100659/2180/v/950/depositphotos_21805519-stock-illustration-travel-logo-vector-sign.jpg"
+              width="60vh"
+              height="60vh"
+              class="d-inline-block align-top"
+              alt=""
+              loading="lazy"
+            />
+            <a class="nav-link active" href="#" style="font-size: 1.5rem"
+              >Home <span class="sr-only">(current)</span></a
+            >
+            <a class="nav-link active" href="#" style="font-size: 1.5rem"
+              >Features</a
+            >
+            <a class="nav-link active" href="#" style="font-size: 1.5rem"
+              >Pricing</a
+            >
+          </div>
+        </div>
+      </nav>
+      <div class="jumbotron jumbotron-fluid mt-5">
+        <div class="about1">
+          <h1 class="display-4 mb-5">About Us</h1>
+          <p>It's all about travel...</p>
+        </div>
+        <div class="about mt-5">
+          <p class="mt-5 ml-3 pt-0">
+            This is a travel tour operator where we focus on a safe
+            journey,superb holydays,amazing locations and the best deals.
+          </p>
+          <p class="mt-5 ml-3 pt-0">
+            We are available 24/7 and operating all around the globe. You are
+            just a click away from the best holydays you ever have had. Look
+            down the website for different offers and sites.
+          </p>
+        </div>
+      </div>
+      <h1 class="mt-5">Deal of the Week</h1>
+      <section class="row">
+        <div class="card col-6 col-md-4 col-lg-3" style="width: 5rem">
+          <img
+            src="https://www.iata.org/contentassets/4b8ec35d55dd4596a1ee21a75aaab835/paris-330x200.jpg?w=330&h=200&mode=crop&scale=both&v=20190829085556"
+            class="card-img-top"
+            alt="Paris"
+            style="width: 250px; height: 150px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Paris</h5>
+            <p class="card-text">
+              Don't miss the opportunity to explore Paris and it's beauty.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="card col-6 col-md-4 col-lg-3" style="width: 5rem">
+          <img
+            src="https://www.telegraph.co.uk/content/dam/insurance/2016/04/06/amsterdam.jpg"
+            class="card-img-top"
+            alt="Amsterdam"
+            style="width: 250px; height: 150px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="card col-6 col-md-4 col-lg-3" style="width: 5rem">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Aerial_view_of_Berlin_%2832881394137%29.jpg/1200px-Aerial_view_of_Berlin_%2832881394137%29.jpg"
+            class="card-img-top"
+            alt="Berlin"
+            style="width: 250px; height: 150px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+
+        <div class="card col-6 col-md-4 col-lg-3" style="width: 5rem">
+          <img
+            src="https://www.india-tourism.net/images/northindia-state.jpg"
+            class="card-img-top"
+            alt="North India"
+            style="width: 250px; height: 150px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </section>
+      <h1 class="mt-5">New Arrivals This Summer</h1>
+      <section class="row shadow-lg p-3 mb-5 bg-secondary rounded">
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://eeradicalization.com/wp-content/uploads/2020/02/1-3.jpg"
+            class="card-img-top"
+            alt="Maldives"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://img.theculturetrip.com/768x432/wp-content/uploads/2018/05/bondi-icebergs--harry-vincent-culture-trip-1.jpg"
+            class="card-img-top"
+            alt="Australia"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://www.himalayaneco.com/userfiles/meenakshi1.jpg"
+            class="card-img-top"
+            alt="South India"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://gos3.ibcdn.com/india-148045726738o.jpeg"
+            class="card-img-top"
+            alt="India"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://i.pinimg.com/originals/49/35/fe/4935fefa7b7fe00cd23a543191220049.jpg"
+            class="card-img-top"
+            alt="Western Europe"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="card col-6 col-md-4 col-xl-2" style="width: 5rem">
+          <img
+            src="https://www.thetimes.co.uk/expert-traveller/wp-content/uploads/2018/11/shutterstock_205106482-2200x880.jpg"
+            class="card-img-top"
+            alt="Albania"
+            style="width: 150px; height: 100px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </section>
+      <h1 class="mt-5">Deal Of The Day</h1>
+      <section id="Dealoftheday" class="row">
+        <div class="dealPhoto col-9">
+          <img
+            class="rounded"
+            src="https://www.cruisetraveloutlet.com/wp-content/uploads/2018/12/Antarctica-Best-Expedition-Cruise-Destinations.jpg"
+            alt="Atarctica"
+          />
+        </div>
+        <div class="dealDay col-3">
+          <h2 class="text-light mt-5">Antarctica</h2>
+          <h3 class="text-light mt-5">14/10/2020</h3>
+          <h4 class="text-light mt-5">800$</h4>
+          <p class="mt-5" style="font-size: 20px">
+            Deal of the day is still not over. You can have amazing Antarctica
+            experience just reach out to us.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <script scr="index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

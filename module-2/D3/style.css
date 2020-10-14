@@ -1,0 +1,56 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+.jumbotron {
+  border-radius: 5px;
+  display: flex;
+  background-image: url("travel.jpg");
+  background-position: center;
+  background-position-y: 90%;
+  color: #343a40;
+  justify-content: space-between;
+}
+
+.jumbotron p {
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  width: 100%;
+  margin-left: 10px;
+}
+.jumbotron h1 {
+  width: 100%;
+  margin-top: 30%;
+  margin-left: 10px;
+}
+.about1 {
+  width: 50%;
+}
+.about {
+  background-color: rgba(248, 249, 250, 0.8);
+  border-radius: 5px;
+  color: #11304f;
+  float: right;
+  width: 40%;
+}
+.about p {
+  width: 80%;
+  margin-right: 0;
+  padding-right: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+.card-body {
+  color: #343a40;
+}
+.Summer img {
+  width: 100px;
+  height: 100px;
+}
+.dealDay {
+  background-color: rgba(32, 81, 131, 0.8);
+  border-radius: 5px;
+}
