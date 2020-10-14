@@ -2,6 +2,7 @@ body {
   background-color: #343a40;
   font-family: "Poppins", sans-serif;
 }
+
 .albums {
   width: 80%;
   background-color: #f8f9fa;
@@ -109,6 +110,7 @@ body {
 
 .favoritE {
   width: 80%;
+  align-items: center;
   background-color: rgba(7, 114, 255, 0.2);
   border-radius: 5px;
 }
@@ -132,7 +134,9 @@ body {
   padding: 10px;
   padding-top: 15px;
 }
-
+.favoritE ul {
+  padding: 0;
+}
 .favoritE li {
   font-size: 20px;
   color: #f8f9fa;
