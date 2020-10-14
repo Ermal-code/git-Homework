@@ -162,6 +162,35 @@ body {
   color: #f8f9fa;
   box-shadow: inset 0px 10px 20px black;
 }
+.main-footer ul {
+  text-align: left;
+  padding-left: 0;
+  margin: 30px;
+}
+
+.main-footer li {
+  list-style: none;
+  display: inline;
+  padding: 30px;
+  margin: 30px;
+}
+
+.main-footer a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-footer li img {
+  border-radius: 20%;
+  width: 40px;
+  height: 40px;
+}
+
+.main-footer li img:hover {
+  opacity: 50%;
+  width: 50px;
+  height: 50px;
+}
 @media (max-width: 600px) {
   .albums img {
     width: 7rem;
