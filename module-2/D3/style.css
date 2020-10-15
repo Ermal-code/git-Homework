@@ -9,8 +9,8 @@ body {
   display: flex;
   background-image: url("travel.jpg");
   background-position: center;
-  background-position-y: 90%;
-  color: #343a40;
+  background-position-y: 85%;
+  color: #ff6366;
   justify-content: space-between;
 }
 
@@ -24,6 +24,7 @@ body {
 .jumbotron h1 {
   width: 100%;
   margin-top: 30%;
+  color: #ff6366;
   margin-left: 10px;
 }
 .about1 {

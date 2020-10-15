@@ -1,0 +1,22 @@
+body {
+  background-color: #6c757d !important;
+  color: white !important;
+}
+
+.btn {
+  width: 125px;
+  height: 38px;
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+.button1 {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  text-align: center;
+  background-color: tomato;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+}
