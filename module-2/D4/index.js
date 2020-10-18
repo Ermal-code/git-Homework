@@ -48,7 +48,7 @@ const assignMember = () => {
   randomUl.appendChild(liTeam);
   liTeam.appendChild(inputbut);
   liTeam.style.display = "inline-block;";
-
+  liTeam.style.listStyle = "none";
   ulElement.removeChild(randomElement);
 
   inputbut.onclick = function () {
