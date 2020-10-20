@@ -105,3 +105,8 @@ authors[1].onmouseover = function () {
 authors[2].onmouseover = function () {
   alert("Chris");
 };
+
+let newBloginp = document.querySelectorAll(".blog-pagination a")[1];
+newBloginp.onclick = function () {
+  addNewBlogPost();
+};
