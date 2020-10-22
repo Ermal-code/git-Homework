@@ -75,7 +75,7 @@ body {
 }
 .reviewS {
   width: 80%;
-  background-color: rgba(7, 114, 255, 0.2);
+  background-color: rgba(6, 110, 247, 0.2);
   border-radius: 5px;
 }
 .reviewS:hover {
@@ -97,20 +97,23 @@ body {
   font-weight: bold;
   padding-left: 30px;
 }
-.reviewS ul {
-  padding: 0;
-}
+
 .reviewS a {
   text-decoration: none;
 }
-.reviewS li {
-  list-style: none;
-  font-size: 22px;
+.table {
   color: #f8f9fa;
-  border-bottom: 2px solid #04203b;
-  padding: 10px;
-  margin-top: 5px;
-  align-items: center;
+}
+.table.table-striped thead {
+  background-color: rgba(18, 72, 143, 0.5);
+}
+
+.table td,
+.table th {
+  border: none;
+}
+.table.table-striped tr:nth-child(even) {
+  background-color: rgba(18, 72, 143, 0.5);
 }
 .star {
   color: rgba(7, 114, 255, 0.7);
