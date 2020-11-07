@@ -32,7 +32,7 @@ const maxChar = (str) => {
   );
 };
 
-console.log(maxChar("Strrriiiiveeee is the beeesttt"));
+console.log("Ex1: ", maxChar("Strrriiiiveeee is the beeesttt"));
 
 /* 2) ANAGRAMS
 Check to see if two provided strings are anagrams of each other.
@@ -64,7 +64,7 @@ const anagrams = (str, str1) => {
   );
 };
 
-console.log(anagrams("Strive,..  i  s the best", "stivre!isbest hte"));
+console.log("Ex2: ", anagrams("Strive,..  i  s the best", "stivre!isbest hte"));
 /* 3) ANAGRAMS 2
 Given a word and a list of possible anagrams, select the correct sublist.
 --- Examples 
@@ -89,6 +89,7 @@ const anagrams2 = (str, myArray) => {
 };
 
 console.log(
+  "Ex3 :",
   anagrams2("listen", [
     "enlists",
     "google",
@@ -112,10 +113,10 @@ and punctuation in determining if the string is a palindrome.
 const palindrome = (str) => {
   let strArray = str.toLowerCase().split("");
   strArray = strArray.reverse().join("");
-  isPalindrome = str === strArray;
+  let isPalindrome = str === strArray;
   return str + " is palindrome : " + isPalindrome;
 };
-console.log(palindrome("arra"));
+console.log("Ex4: ", palindrome("arra"));
 
 /* 5) REVERSE INT
 Given an integer, return an integer that is the reverse
@@ -135,7 +136,7 @@ const reverseInt = (N) => {
     number.pop();
     number.unshift("-");
     number = number.join("");
-    console.log(number);
+
     return N + " reversed is : " + parseInt(number);
   } else {
     number = number.join("");
@@ -143,7 +144,7 @@ const reverseInt = (N) => {
   }
 };
 
-console.log(reverseInt(-5431230));
+console.log("Ex5: ", reverseInt(-5431230));
 
 /* 6) STEPS
 Write a function that accepts a positive number N.
@@ -167,12 +168,17 @@ step has spaces on the right hand side!
 const stepShape = (N) => {
   const char = "#";
   const space = " ";
-  for (i = 1; i <= N; i++) {
-    console.log("'" + char.repeat(i) + space.repeat(N - i) + "'");
+  if (N > 0) {
+    for (i = 1; i <= N; i++) {
+      console.log("'" + char.repeat(i) + space.repeat(N - i) + "'");
+    }
+  } else {
+    console.log("Number is not positive");
   }
 };
 
 stepShape(7);
+
 /* 7) REVERSE STRING
 Given a string, return a new string with the reversed
 order of characters
@@ -186,7 +192,7 @@ const reverseString = (str) => {
   return str.split("").reverse().join("");
 };
 
-console.log(reverseString("Greetings!"));
+console.log(reverseString("Greetings! js"));
 
 /* 8) CHUNK
 Given an array and chunk size, divide the array into many subarrays
@@ -199,6 +205,21 @@ where each subarray is of length size
     chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 */
 
+const chunk = (myArray, N) => {
+  const chunked_arr = [];
+  for (let i = 0; i < myArray.length; i++) {
+    let last = chunked_arr[chunked_arr.length - 1];
+
+    if (!last || last.length === N) {
+      chunked_arr.push([myArray[i]]);
+    } else {
+      last.push(myArray[i]);
+    }
+  }
+  return chunked_arr;
+};
+
+console.log("Ex8: ", chunk([1, 2, 3, 4, 7, 8, 9], 4));
 /* 9) PYRAMID
 Write a function that accepts a positive number N.
 The function should console log a pyramid shape
