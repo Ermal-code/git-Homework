@@ -18,12 +18,15 @@ const loadImg = function (str) {
         myToast.style.right = "45%";
         toastBody.innerHTML = "There is no such thing in our database";
       } else {
+        toastBody.style.backgroundColor = "white";
+        toastBody.style.color = "black";
         toastBody.innerHTML =
           `Total images loaded: ${urlS.length}` + "<br>Sum of Id is : " + sum;
         myToast.style.top = "20%";
         myToast.style.right = "0";
       }
       myToast.classList.add("show");
+      console.log(myToast);
 
       urlArray = imgs.images.map((urls) => urls.url);
 
@@ -112,6 +115,7 @@ primarybtn.onclick = function () {
       .querySelectorAll(".row")[1]
       .removeChild(document.querySelectorAll(".row")[1].firstChild);
   }
+
   loadImg("green");
   console.log(urlArray);
 };
@@ -130,6 +134,7 @@ secbtn.onclick = function () {
       .querySelectorAll(".row")[1]
       .removeChild(document.querySelectorAll(".row")[1].firstChild);
   }
+
   loadImg("blue");
   console.log(urlArray);
 };
@@ -142,8 +147,9 @@ searchBtn.onclick = function () {
       .querySelectorAll(".row")[1]
       .removeChild(document.querySelectorAll(".row")[1].firstChild);
   }
-
-  loadImg(document.querySelector(".jumbotron input[type='text']").value);
+  let searchinp = document.querySelector(".jumbotron input[type='text']");
+  loadImg(searchinp.value);
+  searchinp.value = "";
   console.log(urlArray);
 };
 
