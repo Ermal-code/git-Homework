@@ -15,6 +15,7 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+
     <!--
       PAIR PROGRAMMING EXERCISE.
       1 DRIVER, 1 NAVIGATOR.
@@ -52,7 +53,7 @@
             class="btn btn-outline-secondary"
             onclick="fetchUsers()"
           >
-            Action
+            Name
           </button>
           <button
             type="button"
@@ -64,9 +65,9 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#" onclick="card()">Name</a>
-            <a class="dropdown-item" href="#" onclick="card1()">UserName</a>
-            <a class="dropdown-item" href="#" onclick="card2()">Email</a>
+            <a class="dropdown-item" href="#">Name</a>
+            <a class="dropdown-item" href="#">Username</a>
+            <a class="dropdown-item" href="#">Email</a>
           </div>
         </div>
         <input
@@ -75,6 +76,7 @@
           onchange="handleSearchQuery(event)"
           aria-label="Text input with segmented dropdown button"
         />
+        <button type="button" class="btn btn-outline-secondary">Sort</button>
       </div>
       <div class="row"></div>
     </div>
