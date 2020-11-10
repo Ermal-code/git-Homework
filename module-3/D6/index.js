@@ -24,18 +24,24 @@ const handleSearchQuery = (event) => {
   query = event.target.value;
 };
 
-const fetchUsers = async (q = query) => {
+const fetchUsers = async () => {
   try {
     let response = await fetch("https://jsonplaceholder.typicode.com/users");
 
     let users = await response.json();
-    console.log(users);
+
     let row = document.querySelector(".row");
     let user = [];
 
-    user = users.filter((res) => res.name === q);
+    if (query !== "") {
+      user = users.filter((res) => res.name === query);
+    } else {
+      user = [...users];
+    }
+    console.log(user);
 
-    users.forEach((element) => {
+    row.innerHTML = "";
+    user.forEach((element) => {
       let col = document.createElement("div");
       col.classList.add("col-12", "col-md-6", "col-lg-4");
 
@@ -43,7 +49,9 @@ const fetchUsers = async (q = query) => {
 
       row.appendChild(col);
     });
-  } catch {}
+  } catch {
+    (err) => console.log(err);
+  }
 };
 
 let drowpdownLinks = document.querySelectorAll(".dropdown-menu a");
