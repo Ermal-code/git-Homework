@@ -1,6 +1,7 @@
 let drowpdownLinks = document.querySelectorAll(".dropdown-menu a");
 let actionBtn = document.querySelector(".input-group-prepend .btn");
 let filterInput = document.querySelector(".input-group input[type='text']");
+let sortDir = 0;
 filterInput.placeholder = "Filter by name";
 
 for (let i = 0; i < drowpdownLinks.length; i++) {
@@ -136,13 +137,12 @@ const sortDesc = () => {
 };
 
 document.querySelectorAll(".input-group .btn")[2].onclick = function (e) {
-  let node = e.currentTarget;
-  if (node.className.includes("manuel")) {
+  if (sortDir === 0) {
     sortAsc();
-    node.className = node.className.replace("manuel", "ermal");
+    sortDir = 1;
   } else {
     sortDesc();
-    node.className = node.className.replace("ermal", "manuel");
+    sortDir = 0;
   }
   let row = document.querySelector(".row");
   row.innerHTML = "";
