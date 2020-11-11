@@ -13,7 +13,7 @@ for (let i = 0; i < drowpdownLinks.length; i++) {
 
 const userCard = (userInfo) => {
   return `<div class="card mb-3">
-    <div class="card-header text-info" >
+    <div class="card-header text-info" onclick=(openUser(${userInfo.id})) >
       Name: ${userInfo.name}
     </div>
     <div class="card-header text-danger"  >
@@ -25,7 +25,7 @@ const userCard = (userInfo) => {
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Adress: ${Object.values(
         userInfo.address
-      ).join(" ")}</li>
+      ).join(", ")}</li>
       <li class="list-group-item">Phone: ${userInfo.phone}</li>
       <li class="list-group-item">Company: ${userInfo.company.name}</li>
       <li class="list-group-item">Website: ${userInfo.website}</li>
@@ -46,9 +46,9 @@ const fetchUsers = async () => {
     let users = await response.json();
 
     nameArray(users);
+    addressArray(users);
 
     let row = document.querySelector(".row");
-    let user = [];
 
     if (query !== "") {
       if (actionBtn.innerText === "Name") {
@@ -74,7 +74,6 @@ const fetchUsers = async () => {
       col.innerHTML = userCard(element);
 
       row.appendChild(col);
-      addressArray(element);
     });
   } catch {
     (err) => console.log(err);
@@ -86,10 +85,10 @@ window.onload = () => {
 };
 
 const addressArray = (address) => {
-  delete address.address.geo;
-  let addressEl = Object.values(address.address).join(", ");
-
-  addressArr.push(addressEl);
+  addressArr = address.map((res) => res.address);
+  for (let i = 0; i < addressArr.length; i++) {
+    addressArr[i] = Object.values(addressArr[i]).join(", ");
+  }
 };
 
 const nameArray = (names) => {
@@ -97,4 +96,67 @@ const nameArray = (names) => {
 };
 
 let addressArr = [];
+
 let nameArr = [];
+
+let sortedUsers = [];
+
+let user = [];
+
+const sortAsc = () => {
+  user.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+};
+
+const sortDesc = () => {
+  user.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return 1;
+    }
+    if (nameA > nameB) {
+      return -1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+};
+
+document.querySelectorAll(".input-group .btn")[2].onclick = function (e) {
+  let node = e.currentTarget;
+  if (node.className.includes("manuel")) {
+    sortAsc();
+    node.className = node.className.replace("manuel", "ermal");
+  } else {
+    sortDesc();
+    node.className = node.className.replace("ermal", "manuel");
+  }
+  let row = document.querySelector(".row");
+  row.innerHTML = "";
+  user.forEach((element) => {
+    let col = document.createElement("div");
+    col.classList.add("col-12", "col-md-6", "col-lg-4");
+
+    col.innerHTML = userCard(element);
+
+    row.appendChild(col);
+  });
+};
+
+const openUser = (id) => {
+  window.open("user.html?id=" + id);
+  console.log("user id_____________", id);
+};

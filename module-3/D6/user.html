@@ -15,11 +15,6 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <style>
-      .card-header.text-info:hover {
-        cursor: pointer;
-      }
-    </style>
 
     <!--
       PAIR PROGRAMMING EXERCISE.
@@ -51,45 +46,11 @@
   </head>
   <body>
     <div class="container mt-5">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-            onclick="fetchUsers()"
-          >
-            Name
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Name</a>
-            <a class="dropdown-item" href="#">Username</a>
-            <a class="dropdown-item" href="#">Email</a>
-          </div>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          onchange="handleSearchQuery(event)"
-          aria-label="Text input with segmented dropdown button"
-        />
-        <button type="button" class="btn btn-outline-secondary manuel">
-          sort
-        </button>
-      </div>
       <div class="row"></div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="index.js"></script>
+    <script src="user.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
