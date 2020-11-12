@@ -1,69 +1,162 @@
-const cardItem = (item) => {
-  return `<div class="card mb-4 shadow-lg border border-success" style="min-height:530px" data-toggle="modal" data-target="#exampleModal${item._id}">
-  <img class="img-fluid p-4" style="height:250px" src="${item.imageUrl}">
-  <div class="card-body border border-success">
-  <div style="height:100px; overflow:hidden" >
-    <p class="card-text">${item.description}</p>
+let drowpdownLinks = document.querySelectorAll(".dropdown-menu a");
+let actionBtn = document.querySelector(".input-group-prepend .btn");
+let filterInput = document.querySelector(".input-group input[type='text']");
+let sortDir = 0;
+filterInput.placeholder = "Filter by name";
+
+for (let i = 0; i < drowpdownLinks.length; i++) {
+  drowpdownLinks[i].onclick = () => {
+    actionBtn.innerText = drowpdownLinks[i].innerText;
+    filterInput.placeholder =
+      "Filter by " + drowpdownLinks[i].innerText.toLowerCase();
+  };
+}
+
+const userCard = (userInfo) => {
+  return `<div class="card mb-3">
+    <div class="card-header text-info" onclick=(openUser(${userInfo.id})) >
+      Name: ${userInfo.name}
     </div>
-      <p>
-          Name: ${item.name}
-      </p>
-      <p class="text-secondary">Brand: ${item.brand}</p>
-      <h5 class="text-warning">Price: $${item.price}</h5>
- </div>
-
- <div class="modal fade" id="exampleModal${item._id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <img src="${item.imageUrl}"  class="img-fluid" style="height:300px"> 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-success"  data-dismiss="modal">Close</button>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-  `;
+    <div class="card-header text-danger"  >
+      Username: ${userInfo.username}
+    </div>
+    <div class="card-header text-success"  >
+      Email: ${userInfo.email}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Adress: ${Object.values(
+        userInfo.address
+      ).join(", ")}</li>
+      <li class="list-group-item">Phone: ${userInfo.phone}</li>
+      <li class="list-group-item">Company: ${userInfo.company.name}</li>
+      <li class="list-group-item">Website: ${userInfo.website}</li>
+    </ul>
+  </div>`;
 };
-const fetchFunc = async () => {
-  try {
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/product/",
-      {
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiYzdkMTRiY2RlMTAwMTc2MTZhOTUiLCJpYXQiOjE2MDUxMDAxNTAsImV4cCI6MTYwNjMwOTc1MH0.2fXnELbbS946VA1iQx0AfegsZzfNRcSpZ0vozxd-kYU",
-        },
-      }
-    );
 
-    let product = await response.json();
+let query = "";
+
+const handleSearchQuery = (event) => {
+  query = event.target.value.toLowerCase();
+};
+
+const fetchUsers = async () => {
+  try {
+    let response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    let users = await response.json();
+
+    nameArray(users);
+    addressArray(users);
 
     let row = document.querySelector(".row");
 
+    if (query !== "") {
+      if (actionBtn.innerText === "Name") {
+        user = users.filter((res) => res.name.toLowerCase().includes(query));
+      } else if (actionBtn.innerText === "Username") {
+        user = users.filter((res) =>
+          res.username.toLowerCase().includes(query)
+        );
+      } else {
+        user = users.filter((res) => res.email.toLowerCase().includes(query));
+      }
+    } else {
+      user = [...users];
+    }
+
     row.innerHTML = "";
 
-    product.forEach((element) => {
+    user.forEach((element) => {
+      delete element.address.geo;
       let col = document.createElement("div");
-      col.classList.add("col-12", "col-md-4", "col-lg-3");
-      col.innerHTML = cardItem(element);
-      row.append(col);
+      col.classList.add("col-12", "col-md-6", "col-lg-4");
+
+      col.innerHTML = userCard(element);
+
+      row.appendChild(col);
     });
-    console.log(product);
-  } catch (err) {
-    console.log(err);
+  } catch {
+    (err) => console.log(err);
   }
 };
 
 window.onload = () => {
-  fetchFunc();
+  fetchUsers();
+};
+
+const addressArray = (address) => {
+  addressArr = address.map((res) => res.address);
+  for (let i = 0; i < addressArr.length; i++) {
+    addressArr[i] = Object.values(addressArr[i]).join(", ");
+  }
+};
+
+const nameArray = (names) => {
+  nameArr = names.map((res) => res.name);
+};
+
+let addressArr = [];
+
+let nameArr = [];
+
+let sortedUsers = [];
+
+let user = [];
+
+const sortAsc = () => {
+  user.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+};
+
+const sortDesc = () => {
+  user.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return 1;
+    }
+    if (nameA > nameB) {
+      return -1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+};
+
+document.querySelectorAll(".input-group .btn")[2].onclick = function (e) {
+  if (sortDir === 0) {
+    sortAsc();
+    sortDir = 1;
+  } else {
+    sortDesc();
+    sortDir = 0;
+  }
+  let row = document.querySelector(".row");
+  row.innerHTML = "";
+  user.forEach((element) => {
+    let col = document.createElement("div");
+    col.classList.add("col-12", "col-md-6", "col-lg-4");
+
+    col.innerHTML = userCard(element);
+
+    row.appendChild(col);
+  });
+};
+
+const openUser = (id) => {
+  window.open("user.html?id=" + id);
+  console.log("user id_____________", id);
 };
