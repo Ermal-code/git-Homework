@@ -28,7 +28,7 @@ const createDetail = (item) => {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body pl-5 d-flex justify-content-center position-relative">
+                <div class="modal-body  d-flex justify-content-center position-relative">
                   <img src="${item.imageUrl}"  class="img-fluid" style="height:300px"> 
                 </div>
                 <div class="modal-footer">
