@@ -20,7 +20,7 @@ const createDetail = (item) => {
 </div>
 
 <div class="modal fade" id="exampleModal${item._id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog d-flex align-items-center">
+            <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>
@@ -28,7 +28,7 @@ const createDetail = (item) => {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body pl-5">
+                <div class="modal-body pl-5 d-flex justify-content-center position-relative">
                   <img src="${item.imageUrl}"  class="img-fluid" style="height:300px"> 
                 </div>
                 <div class="modal-footer">
