@@ -1,7 +1,7 @@
 const cardItem = (item) => {
   return `<div class="card mb-4 shadow-lg border border-success" style="min-height:400px">
   <img class="img-fluid p-2" style="height:250px" src="${item.imageUrl}">
-  <div class="card-body border border-success">
+  <div class="card-body border border-success" style="background-color:#f6fefc">
   <div style="height:70px" >
       <p>
         <strong class="text-info">Name</strong>: ${item.name}
@@ -11,7 +11,7 @@ const cardItem = (item) => {
     <p class="card-text text-truncate">${item.description}</p>
     
     
-      <p class="text-secondary"><strong>Brand</strong>: ${item.brand}</p>
+      <p class="text-dark"><strong>Brand</strong>: ${item.brand}</p>
       <h5 class="text-warning"><strong>Price</strong>: $${item.price}</h5>
       <button type="button" class="btn btn-outline-warning my-3" onclick="goToDetails('${item._id}')">View details</button>
  </div>
