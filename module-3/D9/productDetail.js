@@ -2,7 +2,7 @@ let id = null;
 const fetchUrl = "https://striveschool-api.herokuapp.com/api/product/";
 
 const createDetail = (item) => {
-  return `<div class="imgDiv col-12 col-md-6  my-3 border-right border-warning d-flex align-items-center" data-toggle="modal"
+  return `<div class="imgDiv col-12 col-md-6  my-3 border-right border-warning d-flex align-items-center justify-content-center" data-toggle="modal"
   data-target="#exampleModal${item._id}">
   
   <img class="img-fluid" src="${item.imageUrl}" style="height:300px"  />
