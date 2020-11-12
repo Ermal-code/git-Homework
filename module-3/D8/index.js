@@ -1,6 +1,6 @@
 const cardItem = (item) => {
   return `<div class="card mb-4 shadow-lg border border-success" style="min-height:530px" data-toggle="modal" data-target="#exampleModal${item._id}">
-  <img class="img-fluid p-4" style="height:250px" src="${item.imageUrl}">
+  <img class="img-fluid p-2" style="height:250px" src="${item.imageUrl}">
   <div class="card-body border border-success">
   <div style="height:100px; overflow:hidden" >
     <p class="card-text">${item.description}</p>
@@ -52,7 +52,7 @@ const fetchFunc = async () => {
 
     row.innerHTML = "";
 
-    product.forEach((element) => {
+    product.reverse().forEach((element) => {
       let col = document.createElement("div");
       col.classList.add("col-12", "col-md-4", "col-lg-3");
       col.innerHTML = cardItem(element);
