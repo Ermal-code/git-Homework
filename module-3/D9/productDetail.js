@@ -66,11 +66,10 @@ const deleteProduct = async () => {
   try {
     const response = await fetch(fetchUrl + id, {
       method: "DELETE",
-      headers: new Headers({
-        "Content-Type": "application/json",
+      headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFiYzdkMTRiY2RlMTAwMTc2MTZhOTUiLCJpYXQiOjE2MDUxMDIzNTksImV4cCI6MTYwNjMxMTk1OX0.33fI9bSkGvFEm4gg5UVRhx2Pqrdm5Z3kNE04BOVm4tg",
-      }),
+      },
     });
     if (response.ok) {
       // checking the ok property which stores the successful result of the operation
