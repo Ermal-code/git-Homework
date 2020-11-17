@@ -9,6 +9,7 @@ import Scifi from "../data/scifi.json";
 class LatestRelease extends React.Component {
   state = {
     genre: Fantasy,
+    category: "Fantasy",
   };
 
   render() {
@@ -18,14 +19,14 @@ class LatestRelease extends React.Component {
       <>
         <Dropdown>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-            Dropdown Button
+            {this.state.category}
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
             <Dropdown.Item
               href="#/action-1"
               onClick={() =>
-                this.setState({ genre: (this.state.genre = Fantasy) })
+                this.setState({ genre: Fantasy, category: "Fantasy" })
               }
             >
               Fantasy
@@ -33,7 +34,7 @@ class LatestRelease extends React.Component {
             <Dropdown.Item
               href="#/action-2"
               onClick={() =>
-                this.setState({ genre: (this.state.genre = History) })
+                this.setState({ genre: History, category: "History" })
               }
             >
               History
@@ -41,7 +42,7 @@ class LatestRelease extends React.Component {
             <Dropdown.Item
               href="#/action-3"
               onClick={() =>
-                this.setState({ genre: (this.state.genre = Horror) })
+                this.setState({ genre: Horror, category: "Horror" })
               }
             >
               Horror
@@ -49,16 +50,14 @@ class LatestRelease extends React.Component {
             <Dropdown.Item
               href="#/action-3"
               onClick={() =>
-                this.setState({ genre: (this.state.genre = Romance) })
+                this.setState({ genre: Romance, category: "Romance" })
               }
             >
               Romance
             </Dropdown.Item>
             <Dropdown.Item
               href="#/action-3"
-              onClick={() =>
-                this.setState({ genre: (this.state.genre = Scifi) })
-              }
+              onClick={() => this.setState({ genre: Scifi, category: "Scifi" })}
             >
               SciFi
             </Dropdown.Item>

@@ -6,8 +6,6 @@ import MyFooter from "./Components/MyFooter";
 import MyJumbotron from "./Components/MyJumbotron";
 import LatestRelease from "./Components/LastestRelease";
 
-import { render } from "react-dom";
-
 class App extends React.Component {
   render() {
     return (
