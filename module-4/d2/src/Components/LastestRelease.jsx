@@ -7,6 +7,10 @@ import Romance from "../data/romance.json";
 import Scifi from "../data/scifi.json";
 
 class LatestRelease extends React.Component {
+  state = {
+    genre: Fantasy,
+  };
+
   render() {
     console.log(Fantasy);
 
@@ -18,15 +22,50 @@ class LatestRelease extends React.Component {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Fantasy</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">History</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Horror</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Romance</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">SciFi</Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() =>
+                this.setState({ genre: (this.state.genre = Fantasy) })
+              }
+            >
+              Fantasy
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-2"
+              onClick={() =>
+                this.setState({ genre: (this.state.genre = History) })
+              }
+            >
+              History
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-3"
+              onClick={() =>
+                this.setState({ genre: (this.state.genre = Horror) })
+              }
+            >
+              Horror
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-3"
+              onClick={() =>
+                this.setState({ genre: (this.state.genre = Romance) })
+              }
+            >
+              Romance
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-3"
+              onClick={() =>
+                this.setState({ genre: (this.state.genre = Scifi) })
+              }
+            >
+              SciFi
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Row className="mt-4">
-          {Fantasy.map((item) => {
+          {this.state.genre.map((item) => {
             return (
               <Col
                 xs={12}

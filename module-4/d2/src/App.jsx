@@ -9,10 +9,6 @@ import LatestRelease from "./Components/LastestRelease";
 import { render } from "react-dom";
 
 class App extends React.Component {
-  // state = {
-  //   genre: Fantasy,
-  // };
-
   render() {
     return (
       <div className="App">
