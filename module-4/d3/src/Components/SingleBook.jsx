@@ -28,9 +28,14 @@ class SingleBook extends React.Component {
           <Card.Title className="text-truncate">
             {this.props.obj.title}
           </Card.Title>
-          <Card.Text>{this.props.obj.category}</Card.Text>
+          <Card.Text>
+            <strong className="text-danger">Category: </strong>
+            {this.props.obj.category}
+          </Card.Text>
           <br />
-          <Card.Text className="text-warning">{this.props.obj.price}</Card.Text>
+          <Card.Text className="text-warning">
+            ${this.props.obj.price}
+          </Card.Text>
         </Card.Body>
       </Card>
     );
