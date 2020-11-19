@@ -1,10 +1,12 @@
 import React from "react";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 import SingleBook from "./SingleBook";
 
 class BookList extends React.Component {
   state = {
     books: this.props.objArr,
+    selectedBook: null,
   };
 
   HandleSearchQuery = (query) => {
@@ -34,7 +36,9 @@ class BookList extends React.Component {
             }}
           />
         </InputGroup>
-
+        {this.state.selectedBook && (
+          <CommentArea myBook={this.state.selectedBook} />
+        )}
         <Row>
           {this.state.books.map((book) => (
             <Col
@@ -44,7 +48,10 @@ class BookList extends React.Component {
               key={`bookID${book.asin}`}
               className="mb-3"
             >
-              <SingleBook obj={book}></SingleBook>
+              <SingleBook
+                obj={book}
+                onClick={() => this.setState({ selectedBook: book })}
+              ></SingleBook>
             </Col>
           ))}
         </Row>

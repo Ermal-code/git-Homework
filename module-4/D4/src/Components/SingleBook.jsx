@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import CommentArea from "./CommentArea";
 
 class SingleBook extends React.Component {
   state = {
@@ -19,12 +18,6 @@ class SingleBook extends React.Component {
   render() {
     return (
       <>
-        {this.state.selected && (
-          <CommentArea
-            bookId={this.props.obj.asin}
-            bookImg={this.props.obj.img}
-          />
-        )}
         <Card onClick={() => this.handleSelected()}>
           <Card.Img
             variant="top"
@@ -32,7 +25,10 @@ class SingleBook extends React.Component {
             className="img-fluid"
             style={{ height: "200px", objectFit: "cover" }}
           />
-          <Card.Body style={{ backgroundColor: this.state.color }}>
+          <Card.Body
+            style={{ backgroundColor: this.state.color }}
+            onClick={this.props.onClick}
+          >
             <Card.Title className="text-truncate">
               {this.props.obj.title}
             </Card.Title>

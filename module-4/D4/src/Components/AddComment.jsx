@@ -35,6 +35,7 @@ class AddComment extends React.Component {
           }),
         }
       );
+
       if (response.ok) {
         alert("Comment saved!");
         this.setState({

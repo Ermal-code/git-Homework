@@ -7,13 +7,17 @@ class CommentArea extends React.Component {
   render() {
     return (
       <Modal.Dialog>
-        <Modal.Header>
-          <img src={this.props.bookImg} className="img-fluid" alt="book" />
+        <Modal.Header className="flex justify-content-center">
+          <img
+            src={this.props.myBook.img}
+            className="img-fluid rounded"
+            alt="book"
+          />
         </Modal.Header>
 
         <Modal.Body>
-          <CommentList bookId={this.props.bookId} />
-          <AddComment bookId={this.props.bookId} />
+          <CommentList bookId={this.props.myBook.asin} />
+          <AddComment bookId={this.props.myBook.asin} />
         </Modal.Body>
       </Modal.Dialog>
     );
