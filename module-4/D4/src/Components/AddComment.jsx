@@ -109,7 +109,6 @@ class AddComment extends React.Component {
                   id="elementId"
                   placeholder="Element ID"
                   value={this.state.addComment.elementId}
-                  onChange={this.updateCommentField}
                   required
                 />
               </Form.Group>

@@ -8,7 +8,7 @@ class CommentArea extends React.Component {
     return (
       <Modal.Dialog>
         <Modal.Header>
-          <img src={this.props.bookImg} className="img-fluid" />
+          <img src={this.props.bookImg} className="img-fluid" alt="book" />
         </Modal.Header>
 
         <Modal.Body>

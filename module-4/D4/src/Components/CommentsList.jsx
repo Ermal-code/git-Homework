@@ -18,7 +18,7 @@ class CommentList extends React.Component {
         }
       );
       let comments = await response.json();
-      console.log(comments);
+
       this.setState({ comments });
     } catch (e) {
       console.log("error: ", e);
