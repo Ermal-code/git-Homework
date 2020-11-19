@@ -12,7 +12,7 @@ class CommentArea extends React.Component {
         </Modal.Header>
 
         <Modal.Body>
-          <CommentList />
+          <CommentList bookId={this.props.bookId} />
           <AddComment bookId={this.props.bookId} />
         </Modal.Body>
       </Modal.Dialog>

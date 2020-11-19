@@ -9,7 +9,8 @@ class CommentList extends React.Component {
   componentDidMount = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+          this.props.bookId,
         {
           headers: new Headers({
             Authorization:
@@ -84,7 +85,6 @@ class CommentList extends React.Component {
             </ListGroup>
           );
         })}
-        ;
       </div>
     );
   }
