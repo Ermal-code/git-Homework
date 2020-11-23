@@ -8,7 +8,6 @@ class CommentList extends React.Component {
   };
 
   fetchComments = async () => {
-    this.setState({ loading: true });
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +
@@ -35,9 +34,12 @@ class CommentList extends React.Component {
     this.fetchComments();
   };
 
-  componentDidUpdate = (previousProps) => {
-    if (previousProps.bookId !== this.props.bookId) {
+  componentDidUpdate = (previousProps, previousState) => {
+    if (previousState.comments !== this.state.comments) {
       this.fetchComments();
+    }
+    if (previousProps.bookId !== this.props.bookId) {
+      this.setState({ loading: true });
     }
   };
 

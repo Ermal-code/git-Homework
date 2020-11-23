@@ -20,11 +20,11 @@ class AddComment extends React.Component {
     this.setState({ addComment });
   };
 
-  // componentDidUpdate = (previousProps, previousState) => {
-  //   if (previousProps.bookId !== this.props.bookId) {
-  //     this.updateCommentField();
-  //   }
-  // };
+  componentDidUpdate = (previousProps, previousState) => {
+    if (previousProps.bookId !== this.props.bookId) {
+      this.setState({ elementId: this.props.bookId });
+    }
+  };
 
   submitComment = async (e) => {
     e.preventDefault();
