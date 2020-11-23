@@ -51,7 +51,7 @@ class MovieList extends React.Component {
   };
 
   componentDidUpdate = (previousProps) => {
-    if (previousProps !== this.props.query) {
+    if (previousProps.query !== this.props.query) {
       this.getMovies();
     }
   };
