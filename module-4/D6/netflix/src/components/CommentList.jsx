@@ -33,7 +33,7 @@ class CommentList extends React.Component {
   };
 
   componentDidUpdate = (previousProps, previousState) => {
-    if (previousState !== this.state.comments) {
+    if (previousState.comments !== this.state.comments) {
       this.fetchComments();
     }
   };
