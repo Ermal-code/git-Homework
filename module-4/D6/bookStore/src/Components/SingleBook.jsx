@@ -10,6 +10,7 @@ class SingleBook extends React.Component {
   handleSelected = () => {
     if (this.state.selected === false) {
       this.setState({ selected: true, color: "#5B96A5" });
+      this.props.onClick();
     } else {
       this.setState({ selected: false, color: "white" });
     }
@@ -25,10 +26,7 @@ class SingleBook extends React.Component {
             className="img-fluid"
             style={{ height: "200px", objectFit: "cover" }}
           />
-          <Card.Body
-            style={{ backgroundColor: this.state.color }}
-            onClick={this.props.onClick}
-          >
+          <Card.Body style={{ backgroundColor: this.state.color }}>
             <Card.Title className="text-truncate">
               {this.props.obj.title}
             </Card.Title>
