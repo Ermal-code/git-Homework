@@ -36,24 +36,35 @@ class BookList extends React.Component {
             }}
           />
         </InputGroup>
-        {this.state.selectedBook && (
-          <CommentArea myBook={this.state.selectedBook} />
-        )}
+
         <Row>
-          {this.state.books.map((book) => (
-            <Col
-              xs={12}
-              md={4}
-              lg={3}
-              key={`bookID${book.asin}`}
-              className="mb-3"
-            >
-              <SingleBook
-                obj={book}
-                onClick={() => this.setState({ selectedBook: book })}
-              ></SingleBook>
-            </Col>
-          ))}
+          <Col xs={9}>
+            <Row>
+              {this.state.books.map((book) => (
+                <Col
+                  xs={12}
+                  md={6}
+                  lg={4}
+                  key={`bookID${book.asin}`}
+                  className="mb-3"
+                >
+                  <SingleBook
+                    obj={book}
+                    onClick={() => this.setState({ selectedBook: book })}
+                  ></SingleBook>
+                </Col>
+              ))}
+            </Row>
+          </Col>
+          <Col xs={3}>
+            {this.state.selectedBook ? (
+              <CommentArea myBook={this.state.selectedBook} />
+            ) : (
+              <div>
+                <h1>Comment Area</h1>
+              </div>
+            )}
+          </Col>
         </Row>
       </Container>
     );

@@ -6,7 +6,7 @@ import CommentList from "./CommentsList";
 class CommentArea extends React.Component {
   render() {
     return (
-      <Modal.Dialog>
+      <Modal.Dialog className="mt-0">
         <Modal.Header className="flex justify-content-center">
           <img
             src={this.props.myBook.img}
