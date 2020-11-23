@@ -22,7 +22,14 @@ class AddComment extends React.Component {
 
   componentDidUpdate = (previousProps, previousState) => {
     if (previousProps.bookId !== this.props.bookId) {
-      this.setState({ elementId: this.props.bookId });
+      this.setState({
+        addComment: {
+          comment: "",
+          rate: 1,
+          elementId: this.props.bookId,
+        },
+        errMessage: "",
+      });
     }
   };
 
