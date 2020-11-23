@@ -42,7 +42,7 @@ class AddComment extends React.Component {
           addComment: {
             comment: "",
             rate: 1,
-            elementId: this.props.bookId,
+            elementId: this.props.movieId,
           },
           errMessage: "",
         });

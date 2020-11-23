@@ -20,6 +20,7 @@ class CommentList extends React.Component {
         }
       );
       let comments = await response.json();
+      console.log(comments);
       setTimeout(() => {
         this.setState({ comments: comments, loading: false });
       }, 2000);
