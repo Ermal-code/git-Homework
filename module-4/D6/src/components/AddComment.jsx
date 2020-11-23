@@ -11,7 +11,7 @@ class AddComment extends React.Component {
     errMessage: "",
   };
 
-  updateCommentField = e => {
+  updateCommentField = (e) => {
     let addComment = { ...this.state.addComment };
     let currentId = e.currentTarget.id;
 
@@ -20,7 +20,7 @@ class AddComment extends React.Component {
     this.setState({ addComment });
   };
 
-  submitComment = async e => {
+  submitComment = async (e) => {
     e.preventDefault();
     try {
       let response = await fetch(
@@ -64,7 +64,11 @@ class AddComment extends React.Component {
   render() {
     return (
       <>
-        <Form className="w-100 mb-5" onSubmit={this.submitComment}>
+        <Form
+          className="mb-5"
+          onSubmit={this.submitComment}
+          style={{ width: "80%" }}
+        >
           <Row>
             <Col md={12}>
               <Form.Group>
@@ -82,7 +86,7 @@ class AddComment extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col md={5}>
+            <Col md={5} className="pl-0">
               <Form.Group>
                 <Form.Label htmlFor="rate">Rate</Form.Label>
                 <Form.Control

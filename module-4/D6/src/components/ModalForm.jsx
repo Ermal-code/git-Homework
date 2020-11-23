@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import React from "react";
+import { Modal, Row } from "react-bootstrap";
 import AddComment from "./AddComment";
 import CommentList from "./CommentList";
-import MovieList from "./MovieList";
 
 class ModalForm extends React.Component {
   state = {
@@ -21,7 +20,6 @@ class ModalForm extends React.Component {
   // };
 
   render() {
-    console.log(this.state);
     return (
       <>
         <Modal show={this.props.show} onHide={this.props.onHide}>
@@ -30,15 +28,23 @@ class ModalForm extends React.Component {
               {this.props.movie.Title}
             </Modal.Title>
           </Modal.Header>
-          <img
-            src={this.props.movie.Poster}
-            alt="movie"
-            style={{ objectFit: "cover", height: "200px" }}
-          />
-          <Modal.Body>
-            <CommentList movieId={this.props.movie.imdbID} />
 
-            <AddComment movieId={this.props.movie.imdbID} />
+          <Modal.Body>
+            <Row className="flex justify-content-center">
+              <img
+                src={this.props.movie.Poster}
+                alt="movie"
+                style={{
+                  objectFit: "cover",
+                  height: "200px",
+                  marginBottom: "10px",
+                }}
+              />
+            </Row>
+            <CommentList movieId={this.props.movie.imdbID} />
+            <Row className="flex justify-content-center">
+              <AddComment movieId={this.props.movie.imdbID} />
+            </Row>
           </Modal.Body>
         </Modal>
       </>

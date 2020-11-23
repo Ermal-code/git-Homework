@@ -1,4 +1,5 @@
 import React from "react";
+import { InputGroup, FormControl } from "react-bootstrap";
 import MovieList from "./MovieList";
 
 class Home extends React.Component {
@@ -18,19 +19,24 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <div className="form-inline my-2 my-lg-0">
-          {/* searchbar */}
+        <InputGroup
+          size="sm"
+          className="my-5 w-50"
+          style={{ marginLeft: "25%" }}
+        >
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+            placeholder="Search a movie"
+            onChange={(e) => {
+              this.HandleSearchQuery(e.target.value);
+            }}
+          />
+        </InputGroup>
 
-          <form className="searchBar" action="">
-            <input
-              type="search"
-              onChange={(e) => {
-                this.HandleSearchQuery(e.target.value);
-              }}
-            />
-            <i className="fa fa-search"></i>
-          </form>
-        </div>
         {this.state.isTyped ? (
           <MovieList query={this.state.keyWord} />
         ) : (
