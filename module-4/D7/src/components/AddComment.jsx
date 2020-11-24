@@ -20,24 +20,59 @@ class AddComment extends React.Component {
     this.setState({ addComment });
   };
 
+  componentDidUpdate = (previousProps) => {
+    if (
+      previousProps.editedCm.editCounter !== this.props.editedCm.editCounter
+    ) {
+      this.setState({
+        addComment: {
+          comment: this.props.editedCm.comment.comment,
+          rate: this.props.editedCm.comment.rate,
+          elementId: this.props.movieId,
+        },
+      });
+    }
+  };
+
   submitComment = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.addComment),
-          headers: new Headers({
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
-          }),
-        }
-      );
+      let response;
+
+      if (this.props.editedCm.comment._id) {
+        response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/" +
+            this.props.editedCm.comment._id,
+          {
+            method: "PUT",
+            body: JSON.stringify(this.state.addComment),
+            headers: new Headers({
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
+            }),
+          }
+        );
+      } else {
+        response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/",
+          {
+            method: "POST",
+            body: JSON.stringify(this.state.addComment),
+            headers: new Headers({
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
+            }),
+          }
+        );
+      }
 
       if (response.ok) {
-        alert("Comment saved!");
+        alert(
+          `Comment ${this.props.editedCm.comment._id ? "edited!" : "saved!"}`
+        );
+        this.props.clearEditCommentState();
         this.setState({
           addComment: {
             comment: "",
@@ -46,6 +81,7 @@ class AddComment extends React.Component {
           },
           errMessage: "",
         });
+
         this.props.onClick();
       } else {
         console.log("an error occurred");
@@ -136,7 +172,7 @@ class AddComment extends React.Component {
           </Row>
           <Row className="flex justify-content-center mt-5">
             <Button variant="danger" type="submit">
-              Submit
+              {this.props.editedCm.comment._id ? "Edit" : "Submit"}
             </Button>
           </Row>
         </Form>

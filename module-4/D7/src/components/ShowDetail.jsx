@@ -7,7 +7,9 @@ class ShowDeatil extends React.Component {
   state = {
     movie: null,
     submitCounter: 0,
+    deleteCounter: 0,
     // credentials: this.props.data ? this.props.data : {},
+    editComment: { comment: {}, editCounter: 0 },
   };
 
   componentDidMount = async () => {
@@ -77,6 +79,15 @@ class ShowDeatil extends React.Component {
                       submitCounter: this.state.submitCounter + 1,
                     })
                   }
+                  editedCm={this.state.editComment}
+                  clearEditCommentState={() =>
+                    this.setState({
+                      editComment: {
+                        comment: {},
+                        editCounter: 0,
+                      },
+                    })
+                  }
                 />
               </Col>
             </Row>
@@ -85,6 +96,20 @@ class ShowDeatil extends React.Component {
                 <CommentList
                   movieId={this.props.match.params.id}
                   submitCounter={this.state.submitCounter}
+                  onClick={() =>
+                    this.setState({
+                      deleteCounter: this.state.deleteCounter + 1,
+                    })
+                  }
+                  deleteCounter={this.state.deleteCounter}
+                  editCm={(comment) =>
+                    this.setState({
+                      editComment: {
+                        comment: comment,
+                        editCounter: this.state.editComment.editCounter + 1,
+                      },
+                    })
+                  }
                 />
               </Col>
             </Row>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Badge, Spinner, Alert } from "react-bootstrap";
+import { ListGroup, Badge, Spinner, Alert, Button } from "react-bootstrap";
 class CommentList extends React.Component {
   state = {
     comments: [],
@@ -39,8 +39,35 @@ class CommentList extends React.Component {
       console.log("ComponentDidUpdate is working...");
       this.fetchComments();
     }
+    if (previousProps.deleteCounter !== this.props.deleteCounter) {
+      console.log("ComponentDidUpdate is working...");
+      this.fetchComments();
+    }
   };
 
+  deleteComment = async (commentID) => {
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" + commentID,
+        {
+          method: "DELETE",
+          headers: new Headers({
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NWY4OTk4MzViMDAwMTc1ODRlZTIiLCJpYXQiOjE2MDU4NjU2MjQsImV4cCI6MTYwNzA3NTIyNH0.IdqIspL4rMxO-KBqvMMNspg3ITHwYcIBjTPhoBq4wEA",
+          }),
+        }
+      );
+      if (response.ok) {
+        // checking the ok property which stores the successful result of the operation
+        alert("Comment deleted successfully");
+        this.props.onClick();
+      } else {
+        alert("Something went wrong!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   render() {
     return (
       <div className="mb-5">
@@ -75,16 +102,32 @@ class CommentList extends React.Component {
                   }
                   return (
                     <ListGroup key={index}>
-                      <ListGroup.Item className="text-dark text-center">
+                      <ListGroup.Item className="commentDelete text-dark text-center d-flex justify-content-between">
                         Comment: {comment.comment}
+                        <span className="mr-5">
+                          Rate
+                          <Badge pill variant={variant} className="ml-1">
+                            {comment.rate}
+                          </Badge>
+                        </span>
+                        <span style={{ display: "none" }}>
+                          <Button
+                            variant="danger"
+                            onClick={() => {
+                              this.deleteComment(comment._id);
+                            }}
+                            className="mr-2"
+                          >
+                            DELETE
+                          </Button>
+                          <Button
+                            variant="info"
+                            onClick={() => this.props.editCm(comment)}
+                          >
+                            EDIT
+                          </Button>
+                        </span>
                       </ListGroup.Item>
-                      <ListGroup.Item className="text-dark text-center">
-                        <span>Rate </span>
-                        <Badge pill variant={variant}>
-                          {comment.rate}
-                        </Badge>
-                      </ListGroup.Item>
-                      <ListGroup.Item></ListGroup.Item>
                     </ListGroup>
                   );
                 })}

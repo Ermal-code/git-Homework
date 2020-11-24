@@ -120,6 +120,12 @@ form:hover .fa {
   z-index: 1000;
 }
 
+.commentDelete:hover span:first-child {
+  display: none;
+}
+.commentDelete:hover span:last-child {
+  display: flex !important;
+}
 /* .movieCard:hover {
   background-color: rgba(0, 0, 0, 0.644);
   z-index: 99;
