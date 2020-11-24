@@ -120,16 +120,25 @@ form:hover .fa {
   z-index: 1000;
 }
 
+.commentDelete:hover span:first-child {
+  display: none;
+}
+.commentDelete:hover span:last-child {
+  display: flex !important;
+}
 /* .movieCard:hover {
   background-color: rgba(0, 0, 0, 0.644);
   z-index: 99;
 } */
+.overlay-icons {
+  display: flex;
+  justify-content: center;
+}
 
 .overlay-icons:hover h4 {
   background-color: rgba(0, 0, 0, 0.644);
   font-size: 20px;
   position: absolute;
-  left: 0;
   top: 5px;
   display: block !important;
   z-index: 2;
@@ -137,14 +146,20 @@ form:hover .fa {
 
 .overlay-icons:hover button {
   position: absolute;
-  bottom: 10%;
-  right: 1px;
+  bottom: 0;
   display: block !important;
   z-index: 3;
 }
 
 .footer__container {
   font-size: 10px;
+}
+
+.movieDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
 }
 
 /* .movieCard .overlay-icons:after {

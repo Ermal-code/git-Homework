@@ -20,24 +20,59 @@ class AddComment extends React.Component {
     this.setState({ addComment });
   };
 
+  componentDidUpdate = (previousProps) => {
+    if (
+      previousProps.editedCm.editCounter !== this.props.editedCm.editCounter
+    ) {
+      this.setState({
+        addComment: {
+          comment: this.props.editedCm.comment.comment,
+          rate: this.props.editedCm.comment.rate,
+          elementId: this.props.movieId,
+        },
+      });
+    }
+  };
+
   submitComment = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.addComment),
-          headers: new Headers({
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
-          }),
-        }
-      );
+      let response;
+
+      if (this.props.editedCm.comment._id) {
+        response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/" +
+            this.props.editedCm.comment._id,
+          {
+            method: "PUT",
+            body: JSON.stringify(this.state.addComment),
+            headers: new Headers({
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
+            }),
+          }
+        );
+      } else {
+        response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/",
+          {
+            method: "POST",
+            body: JSON.stringify(this.state.addComment),
+            headers: new Headers({
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NmVlNDk4MzViMDAwMTc1ODRlZWYiLCJpYXQiOjE2MDU3OTE0NjEsImV4cCI6MTYwNzAwMTA2MX0.YTGWs-WE6fSktqoFHduczyCMUNBgU_oun60C8b9uJnk",
+            }),
+          }
+        );
+      }
 
       if (response.ok) {
-        alert("Comment saved!");
+        alert(
+          `Comment ${this.props.editedCm.comment._id ? "edited!" : "saved!"}`
+        );
+        this.props.clearEditCommentState();
         this.setState({
           addComment: {
             comment: "",
@@ -46,6 +81,8 @@ class AddComment extends React.Component {
           },
           errMessage: "",
         });
+
+        this.props.onClick();
       } else {
         console.log("an error occurred");
         let error = await response.json();
@@ -65,14 +102,21 @@ class AddComment extends React.Component {
     return (
       <>
         <Form
-          className="mb-5"
+          className="mb-3"
           onSubmit={this.submitComment}
-          style={{ width: "80%" }}
+          style={{
+            width: "80%",
+            height: "50%",
+            marginTop: "10%",
+          }}
         >
           <Row>
             <Col md={12}>
               <Form.Group>
-                <Form.Label htmlFor="comment">Add a Comment</Form.Label>
+                <Form.Label htmlFor="comment" className="text-dark">
+                  Add a Comment
+                </Form.Label>
+
                 <Form.Control
                   type="text"
                   name="comment"
@@ -81,14 +125,17 @@ class AddComment extends React.Component {
                   value={this.state.addComment.comment}
                   onChange={this.updateCommentField}
                   required
+                  className="mt-4"
                 />
               </Form.Group>
             </Col>
           </Row>
           <Row>
-            <Col md={5} className="pl-0">
+            <Col md={5} className="pl-0 mt-3">
               <Form.Group>
-                <Form.Label htmlFor="rate">Rate</Form.Label>
+                <Form.Label htmlFor="rate" className="text-dark">
+                  Rate
+                </Form.Label>
                 <Form.Control
                   as="select"
                   name="rate"
@@ -108,7 +155,9 @@ class AddComment extends React.Component {
           <Row>
             <Col md={12}>
               <Form.Group>
-                <Form.Label htmlFor="elementId">Element ID</Form.Label>
+                <Form.Label htmlFor="elementId" className="text-dark">
+                  Element ID
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="elementId"
@@ -116,13 +165,14 @@ class AddComment extends React.Component {
                   placeholder="Element ID"
                   value={this.state.addComment.elementId}
                   readOnly
+                  className="mt-4"
                 />
               </Form.Group>
             </Col>
           </Row>
-          <Row className="flex justify-content-center">
+          <Row className="flex justify-content-center mt-5">
             <Button variant="danger" type="submit">
-              Submit
+              {this.props.editedCm.comment._id ? "Edit" : "Submit"}
             </Button>
           </Row>
         </Form>

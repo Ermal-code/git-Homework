@@ -5,8 +5,9 @@ import CommentList from "./CommentList";
 
 class ModalForm extends React.Component {
   state = {
-    products: [],
-    show: false,
+    submitCounter: 0,
+    deleteCounter: 0,
+    editComment: { comment: {}, editCounter: 0 },
     // credentials: this.props.data ? this.props.data : {},
   };
 
@@ -41,9 +42,40 @@ class ModalForm extends React.Component {
                 }}
               />
             </Row>
-            <CommentList movieId={this.props.movie.imdbID} />
+            <CommentList
+              movieId={this.props.movie.imdbID}
+              submitCounter={this.state.submitCounter}
+              onClick={() =>
+                this.setState({
+                  deleteCounter: this.state.deleteCounter + 1,
+                })
+              }
+              deleteCounter={this.state.deleteCounter}
+              editCm={(comment) =>
+                this.setState({
+                  editComment: {
+                    comment: comment,
+                    editCounter: this.state.editComment.editCounter + 1,
+                  },
+                })
+              }
+            />
             <Row className="flex justify-content-center">
-              <AddComment movieId={this.props.movie.imdbID} />
+              <AddComment
+                movieId={this.props.movie.imdbID}
+                onClick={() =>
+                  this.setState({ submitCounter: this.state.submitCounter + 1 })
+                }
+                editedCm={this.state.editComment}
+                clearEditCommentState={() =>
+                  this.setState({
+                    editComment: {
+                      comment: {},
+                      editCounter: 0,
+                    },
+                  })
+                }
+              />
             </Row>
           </Modal.Body>
         </Modal>
