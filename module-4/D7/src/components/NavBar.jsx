@@ -43,9 +43,16 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item mr-3">
-              <a className="nav-link" href="#">
+              <Link
+                to="/tvshows/:serie"
+                className={
+                  this.props.location.pathname === "/tvshows/:serie"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
                 TV Shows
-              </a>
+              </Link>
             </li>
           </ul>
 

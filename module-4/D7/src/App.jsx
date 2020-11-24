@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import ShowDeatil from "./components/ShowDetail";
+import TvShows from "./components/TvShows";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <NavBar />
         <Route path="/" exact component={Home} />
         <Route path="/details/:id" exact component={ShowDeatil} />
+        <Route path="/tvshows/:serie" exact component={TvShows} />
         <Footer />
       </Router>
     </div>
