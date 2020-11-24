@@ -7,6 +7,7 @@ class CommentList extends React.Component {
   };
 
   fetchComments = async () => {
+    this.setState({ loading: true });
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +

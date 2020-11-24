@@ -8,6 +8,8 @@ class CommentList extends React.Component {
   };
 
   fetchComments = async () => {
+    this.setState({ loading: true });
+    this.props.clearEditCommentState();
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +
@@ -22,7 +24,7 @@ class CommentList extends React.Component {
       );
 
       let comments = await response.json();
-
+      console.log("comment array ", comments);
       setTimeout(() => {
         this.setState({ comments: comments, loading: false });
       }, 2000);
@@ -30,19 +32,48 @@ class CommentList extends React.Component {
       console.log("error: ", e);
     }
   };
+
+  deleteComment = async (commentID) => {
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" + commentID,
+        {
+          method: "DELETE",
+          headers: new Headers({
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NWY4OTk4MzViMDAwMTc1ODRlZTIiLCJpYXQiOjE2MDU4NjU2MjQsImV4cCI6MTYwNzA3NTIyNH0.IdqIspL4rMxO-KBqvMMNspg3ITHwYcIBjTPhoBq4wEA",
+          }),
+        }
+      );
+      if (response.ok) {
+        // checking the ok property which stores the successful result of the operation
+        alert("Comment deleted successfully");
+      } else {
+        alert("Something went wrong!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   componentDidMount = () => {
     this.fetchComments();
   };
 
-  componentDidUpdate = (previousProps, previousState) => {
-    if (previousState.comments !== this.state.comments) {
+  componentDidUpdate = (previousProps) => {
+    if (previousProps.bookId !== this.props.bookId) {
+      console.log("ComponentDidUpdate is working...");
       this.fetchComments();
     }
-    if (previousProps.bookId !== this.props.bookId) {
-      this.setState({ loading: true });
+    if (previousProps.submitCounter !== this.props.submitCounter) {
+      console.log("ComponentDidUpdate is working...");
+      this.fetchComments();
+    }
+    if (previousProps.deleteCounter !== this.props.deleteCounter) {
+      console.log("ComponentDidUpdate is working...");
+      this.fetchComments();
     }
   };
-
   deleteComment = async (commentID) => {
     try {
       let response = await fetch(
@@ -58,6 +89,7 @@ class CommentList extends React.Component {
 
       if (response.ok) {
         alert("Comment deleted");
+        this.props.onClick();
       } else alert("Something went wrong");
     } catch (e) {
       console.log("error: ", e);
@@ -91,20 +123,33 @@ class CommentList extends React.Component {
                 }
                 return (
                   <ListGroup key={index}>
-                    <ListGroup.Item>Comment: {comment.comment}</ListGroup.Item>
-                    <ListGroup.Item>
-                      <span>Rate </span>
-                      <Badge pill variant={variant}>
-                        {comment.rate}
-                      </Badge>
+                    <ListGroup.Item className="text-dark text-center d-flex justify-content-between">
+                      Comment: {comment.comment}
+                      <span className="mr-2">
+                        Rate
+                        <Badge pill variant={variant} className="ml-1">
+                          {comment.rate}
+                        </Badge>
+                      </span>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                      <Button
-                        variant="danger"
-                        onClick={() => this.deleteComment(comment._id)}
-                      >
-                        Delete
-                      </Button>
+                      <span>
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            this.deleteComment(comment._id);
+                          }}
+                          className="mr-2"
+                        >
+                          DELETE
+                        </Button>
+                        <Button
+                          variant="info"
+                          onClick={() => this.props.editCm(comment)}
+                        >
+                          EDIT
+                        </Button>
+                      </span>
                     </ListGroup.Item>
                   </ListGroup>
                 );

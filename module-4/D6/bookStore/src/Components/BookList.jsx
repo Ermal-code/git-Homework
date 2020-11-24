@@ -38,7 +38,7 @@ class BookList extends React.Component {
         </InputGroup>
 
         <Row>
-          <Col xs={9}>
+          <Col xs={6} md={8}>
             <Row>
               {this.state.books.map((book) => (
                 <Col
@@ -56,7 +56,7 @@ class BookList extends React.Component {
               ))}
             </Row>
           </Col>
-          <Col xs={3}>
+          <Col xs={6} md={4}>
             {this.state.selectedBook ? (
               <CommentArea myBook={this.state.selectedBook} />
             ) : (
