@@ -44,7 +44,7 @@ class SerieList extends React.Component {
       let newMovies = movies.Search;
       console.log(newMovies);
 
-      if (newMovies === undefined) {
+      if (!newMovies) {
         console.log("an error occurred");
         setTimeout(() => {
           this.setState({
@@ -78,7 +78,10 @@ class SerieList extends React.Component {
     return (
       <>
         {this.state.Error ? (
-          <Alert variant="danger">
+          <Alert
+            variant="danger text-center w-50"
+            style={{ marginLeft: "25%" }}
+          >
             There is no such thing on our data base
           </Alert>
         ) : (
