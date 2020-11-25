@@ -1,11 +1,27 @@
 import React from "react";
 import dishes from "../data/menu.json";
 import SingleDish from "./SingleDish.jsx";
-import { Container } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 
-const Menu = () => (
-  <Container>
-    {dishes && dishes.map((dish) => <SingleDish dish={dish} key={dish.id} />)}
-  </Container>
-);
+class Menu extends React.Component {
+  state = {
+    dishes: dishes,
+  };
+
+  render() {
+    return (
+      <Container>
+        {this.state.dishes.map((dish) => (
+          <SingleDish dish={dish} key={dish.id} />
+        ))}
+        {this.state.dishes.length === 0 && (
+          <Alert variant="warning" style={{ marginTop: "10%" }}>
+            Work in progress
+          </Alert>
+        )}
+      </Container>
+    );
+  }
+}
+
 export default Menu;
