@@ -10,7 +10,7 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mb-4">
         {this.state.dishes.map((dish) => (
           <SingleDish dish={dish} key={dish.id} />
         ))}

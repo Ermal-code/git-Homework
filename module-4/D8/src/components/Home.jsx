@@ -6,7 +6,7 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        <Row className="justify-content-center mt-3">
+        <Row className="justify-content-center mt-3 mb-5">
           <Col xs={6}>
             <h1>Welcome To Strivestaurant!</h1>
             <p className="lead">The best dishes you can find on the web!</p>
