@@ -3,12 +3,17 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
-  state = {
-    renderLoading: "Navbar is rendering...",
-  };
+  constructor(props) {
+    super(props);
+    this.state = { renderLoading: "Navbar is rendering..." };
+    console.log(this.state.renderLoading);
+  }
+
+  // state = {
+  //   renderLoading: "Navbar is rendering...",
+  // };
 
   render() {
-    console.log(this.state.renderLoading);
     return (
       <div>
         <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
