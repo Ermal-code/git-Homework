@@ -131,8 +131,15 @@ form:hover .fa {
   z-index: 99;
 } */
 .overlay-icons {
+  position: relative;
   display: flex;
   justify-content: center;
+}
+
+.overlay-icons:hover {
+  transform: scale(1.1);
+  transition: 0.6s ease;
+  z-index: 1;
 }
 
 .overlay-icons:hover h4 {

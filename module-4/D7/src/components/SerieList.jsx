@@ -29,7 +29,7 @@ class SerieList extends React.Component {
   };
 
   getMovies = async () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true, Error: false });
 
     try {
       let response = await fetch(
@@ -48,6 +48,7 @@ class SerieList extends React.Component {
         console.log("an error occurred");
         setTimeout(() => {
           this.setState({
+            Movies: [],
             loading: false,
             Error: true,
           });
@@ -59,8 +60,8 @@ class SerieList extends React.Component {
           this.setState({ Movies: newMovies, loading: false, Error: false });
         }, 2000);
       }
-    } catch (e) {
-      console.log("error: ", e);
+    } catch (err) {
+      console.log("error: ", err);
     }
   };
 
@@ -79,7 +80,8 @@ class SerieList extends React.Component {
       <>
         {this.state.Error ? (
           <Alert
-            variant="danger text-center w-50"
+            variant="danger"
+            className="text-center w-50"
             style={{ marginLeft: "25%" }}
           >
             There is no such thing on our data base
@@ -113,7 +115,7 @@ class SerieList extends React.Component {
                         md={3}
                         lg={2}
                         key={`MovieID${movie.imdbID}`}
-                        className="mb-3"
+                        className="mb-3 px-0"
                       >
                         <SingleMovie
                           history={this.props.history}

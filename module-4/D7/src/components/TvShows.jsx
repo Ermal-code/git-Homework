@@ -9,11 +9,14 @@ class TvShows extends React.Component {
     isTyped: false,
   };
 
-  HandleSearchQuery = (query) => {
-    if (query.length >= 3) {
-      this.setState({ keyWord: query, isTyped: true });
+  HandleSearchQuery = (e) => {
+    if (e.keyCode === 13 || e.key === "Enter") {
+      this.setState({ keyWord: this.state.keyWord, isTyped: true });
     } else {
-      this.setState({ keyWord: "", isTyped: false });
+      this.setState({ keyWord: e.currentTarget.value });
+    }
+    if (this.state.keyWord === "") {
+      this.setState({ isTyped: false });
     }
   };
 
@@ -33,9 +36,9 @@ class TvShows extends React.Component {
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
             placeholder="Search a serie"
-            onChange={(e) => {
-              this.HandleSearchQuery(e.target.value);
-            }}
+            onKeyDown={this.HandleSearchQuery}
+            onChange={this.HandleSearchQuery}
+            value={this.state.keyWord}
           />
         </InputGroup>
 
