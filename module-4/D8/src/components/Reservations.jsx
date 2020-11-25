@@ -12,6 +12,9 @@ class Reservations extends React.Component {
 
   //lifecycle method that is going to be triggered just once after initial loading
   componentDidMount = async () => {
+    {
+      this.props.notMyFavdish();
+    }
     try {
       let response = await fetch(
         "https://striveschool.herokuapp.com/api/reservation"

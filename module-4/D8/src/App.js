@@ -11,11 +11,14 @@ import DishDetails from "./components/DishDetails";
 import Menu from "./components/Menu";
 
 class App extends React.Component {
+  state = {
+    myFavdish: false,
+  };
   render() {
     return (
       <>
         <Router>
-          <NavBar title="Strivestaurant" />
+          <NavBar title="Strivestaurant" myFavdish={this.state.myFavdish} />
           <Route
             path="/"
             exact
@@ -24,17 +27,55 @@ class App extends React.Component {
             // )}
             render={(
               props // props are history, location, match
-            ) => <Home title="Stefano" {...props} />} // in this way you can pass your own props along with the router ones
+            ) => (
+              <Home
+                title="Stefano"
+                notMyFavdish={() => {
+                  this.setState({ myFavdish: false });
+                }}
+                {...props}
+              />
+            )} // in this way you can pass your own props along with the router ones
           />
-          <Route path="/menu" exact component={Menu} />
+          <Route
+            path="/menu"
+            exact
+            render={(props) => (
+              <Menu
+                notMyFavdish={() => {
+                  this.setState({ myFavdish: false });
+                }}
+                {...props}
+              />
+            )}
+          />
           <Route
             path="/reservation"
             exact
             render={(props) => (
-              <Reservations header="Reservations" {...props} />
+              <Reservations
+                header="Reservations"
+                notMyFavdish={() => {
+                  this.setState({ myFavdish: false });
+                }}
+                {...props}
+              />
             )}
           />
-          <Route path="/details/:stefano" component={DishDetails} />
+          <Route
+            path="/details/:stefano"
+            render={(props) => (
+              <DishDetails
+                myFavdish={() => {
+                  this.setState({ myFavdish: true });
+                }}
+                notMyFavdish={() => {
+                  this.setState({ myFavdish: false });
+                }}
+                {...props}
+              />
+            )}
+          />
         </Router>
       </>
     );

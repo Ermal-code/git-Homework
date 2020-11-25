@@ -7,6 +7,9 @@ class Menu extends React.Component {
   state = {
     dishes: dishes,
   };
+  componentDidMount = () => {
+    this.props.notMyFavdish();
+  };
 
   render() {
     return (

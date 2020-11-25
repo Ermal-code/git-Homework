@@ -13,6 +13,11 @@ class DishDetails extends React.Component {
     let correctDishToLoad = allTheDishes.find(
       (dish) => dish.id.toString() === dishIdFromTheSearchBar
     );
+    if (this.props.match.params.stefano === "2") {
+      this.props.myFavdish();
+    } else {
+      this.props.notMyFavdish();
+    }
     setTimeout(() => {
       this.setState({
         dish: correctDishToLoad,
