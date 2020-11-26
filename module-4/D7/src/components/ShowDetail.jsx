@@ -45,6 +45,7 @@ class ShowDeatil extends React.Component {
                   style={{
                     color: "white",
                     backgroundColor: "rgba(0, 0, 0, 0.6)",
+                    height: "100%",
                   }}
                 >
                   <div>

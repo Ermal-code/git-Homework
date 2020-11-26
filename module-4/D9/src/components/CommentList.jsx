@@ -103,7 +103,7 @@ class CommentList extends React.Component {
                   }
                   return (
                     <ListGroup key={index}>
-                      <ListGroup.Item className="commentDelete text-dark  d-flex justify-content-between">
+                      <ListGroup.Item className="commentDelete text-dark  d-flex justify-content-between align-items-center">
                         {comment.comment}
                         <div className="ml-2 mr-0 d-flex align-items-center">
                           Rate

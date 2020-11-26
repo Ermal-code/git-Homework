@@ -59,8 +59,6 @@ body {
   padding: 5px;
 }
 
-
-
 .fa {
   box-sizing: border-box;
   padding: 10px;
@@ -107,9 +105,17 @@ form:hover .fa {
   z-index: 1000;
 }
 
-.commentDelete:hover span:first-child {
-  display: none;
+.commentDelete:hover div {
+  display: none !important;
 }
+
+.commentDelete span:last-child button.btn {
+  height: 40px !important;
+  text-align: center !important;
+  line-height: 10px;
+  padding: 10px 8px !important;
+}
+
 .commentDelete:hover span:last-child {
   display: flex !important;
 }

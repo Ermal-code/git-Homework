@@ -102,12 +102,11 @@ class AddComment extends React.Component {
     return (
       <>
         <Form
-          className="mb-3"
+          className="mt-4"
           onSubmit={this.submitComment}
           style={{
             width: "80%",
             height: "50%",
-            marginTop: "10%",
           }}
         >
           <Row>
@@ -125,13 +124,12 @@ class AddComment extends React.Component {
                   value={this.state.addComment.comment}
                   onChange={this.updateCommentField}
                   required
-                  className="mt-4"
                 />
               </Form.Group>
             </Col>
           </Row>
           <Row>
-            <Col md={5} className="pl-0 mt-3">
+            <Col md={5}>
               <Form.Group>
                 <Form.Label htmlFor="rate" className="text-dark">
                   Rate
@@ -165,7 +163,6 @@ class AddComment extends React.Component {
                   placeholder="Element ID"
                   value={this.state.addComment.elementId}
                   readOnly
-                  className="mt-4"
                 />
               </Form.Group>
             </Col>
