@@ -7,7 +7,7 @@ class SerieList extends React.Component {
   state = {
     Movies: [],
     selectedMovie: null,
-    displayModal: false,
+
     loading: true,
     Error: false,
   };
@@ -98,11 +98,7 @@ class SerieList extends React.Component {
               ) : (
                 <>
                   {this.state.selectedMovie && (
-                    <ShowDetail
-                      show={this.state.displayModal}
-                      movie={this.state.selectedMovie}
-                      onHide={() => this.setState({ displayModal: false })}
-                    />
+                    <ShowDetail movie={this.state.selectedMovie} />
                   )}
 
                   <h1 className="mt-4 mb-3">
@@ -122,7 +118,6 @@ class SerieList extends React.Component {
                           Movie={movie}
                           onClicked={() =>
                             this.setState({
-                              displayModal: true,
                               selectedMovie: movie,
                             })
                           }

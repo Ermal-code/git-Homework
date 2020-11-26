@@ -21,6 +21,7 @@ class CommentList extends React.Component {
         }
       );
       let comments = await response.json();
+      comments = comments.reverse();
       console.log("comment array", comments);
       setTimeout(() => {
         this.setState({ comments: comments, loading: false });
@@ -99,14 +100,14 @@ class CommentList extends React.Component {
               }
               return (
                 <ListGroup key={index}>
-                  <ListGroup.Item className="commentDelete text-dark text-center d-flex justify-content-between">
-                    Comment: {comment.comment}
-                    <span className="mr-2">
+                  <ListGroup.Item className="commentDelete text-dark  d-flex justify-content-between">
+                    <p className="mr-2">{comment.comment}</p>
+                    <div className="ml-2 mr-0 d-flex align-items-center">
                       Rate
                       <Badge pill variant={variant} className="ml-1">
                         {comment.rate}
                       </Badge>
-                    </span>
+                    </div>
                     <span style={{ display: "none" }}>
                       <Button
                         variant="danger"

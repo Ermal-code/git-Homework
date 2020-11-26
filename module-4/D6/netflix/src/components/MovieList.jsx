@@ -84,7 +84,7 @@ class MovieList extends React.Component {
                     md={3}
                     lg={2}
                     key={`MovieID${movie.imdbID}`}
-                    className="mb-3"
+                    className="mb-3 px-0 position-relative"
                   >
                     <SingleMovie
                       Movie={movie}

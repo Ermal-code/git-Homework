@@ -103,7 +103,7 @@ form:hover .fa {
   color: white;
 }
 .thumbnails {
-  height: 200px;
+  height: 300px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -120,19 +120,33 @@ form:hover .fa {
   z-index: 1000;
 }
 
-.commentDelete:hover span:first-child {
-  display: none;
+.commentDelete:hover div {
+  display: none !important;
 }
 .commentDelete:hover span:last-child {
   display: flex !important;
+  align-items: center;
+}
+
+.commentDelete span:last-child button.btn {
+  height: 40px !important;
+  text-align: center !important;
+  line-height: 10px;
+  padding: 10px 8px !important;
 }
 /* .movieCard:hover {
   background-color: rgba(0, 0, 0, 0.644);
   z-index: 99;
 } */
 .overlay-icons {
+  position: relative;
   display: flex;
   justify-content: center;
+}
+.overlay-icons:hover {
+  transform: scale(1.1);
+  transition: 0.6s ease;
+  z-index: 333;
 }
 
 .overlay-icons:hover h4 {
@@ -141,7 +155,7 @@ form:hover .fa {
   position: absolute;
   top: 5px;
   display: block !important;
-  z-index: 2;
+  z-index: 3;
 }
 
 .overlay-icons:hover button {

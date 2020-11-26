@@ -7,7 +7,7 @@ class MovieList extends React.Component {
   state = {
     Movies: [],
     selectedMovie: null,
-    displayModal: false,
+
     loading: true,
     Error: false,
   };
@@ -82,13 +82,7 @@ class MovieList extends React.Component {
               />
             ) : (
               <>
-                {this.state.selectedMovie && (
-                  <ShowDetail
-                    show={this.state.displayModal}
-                    movie={this.state.selectedMovie}
-                    onHide={() => this.setState({ displayModal: false })}
-                  />
-                )}
+                {this.state.selectedMovie && <ShowDetail />}
 
                 <h1 className="mt-4 mb-3">{this.props.query.toUpperCase()}</h1>
                 <Row>
@@ -100,16 +94,7 @@ class MovieList extends React.Component {
                       key={`MovieID${movie.imdbID}`}
                       className="mb-3 px-0 position-relative"
                     >
-                      <SingleMovie
-                        history={this.props.history}
-                        Movie={movie}
-                        onClicked={() =>
-                          this.setState({
-                            displayModal: true,
-                            selectedMovie: movie,
-                          })
-                        }
-                      />
+                      <SingleMovie history={this.props.history} Movie={movie} />
                     </Col>
                   ))}
                 </Row>
