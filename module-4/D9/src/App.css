@@ -138,6 +138,16 @@ form:hover input {
   display: block;
 }
 
+.commentDelete:hover div {
+  display: none !important;
+}
+
+.commentDelete span:last-child button.btn {
+  height: 40px !important;
+  text-align: center !important;
+  line-height: 10px;
+  padding: 10px 8px !important;
+}
 form:hover .fa {
   background: #07051a;
   color: white;
