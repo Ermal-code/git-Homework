@@ -73,7 +73,7 @@ class MovieList extends React.Component {
     return (
       <>
         {!this.state.Error ? (
-          <Container>
+          <div className="myContainer">
             {this.state.loading ? (
               <Spinner
                 animation="grow"
@@ -100,7 +100,7 @@ class MovieList extends React.Component {
                 </Row>
               </>
             )}
-          </Container>
+          </div>
         ) : (
           <Alert
             variant="danger"

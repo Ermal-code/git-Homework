@@ -2,6 +2,7 @@ import React from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import MovieList from "./MovieList";
 import JumboCarousel from "./JumboCarousel";
+import NavBar from "./NavBar";
 
 class Home extends React.Component {
   state = {
@@ -20,6 +21,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
+        <NavBar />
         <JumboCarousel />
         <InputGroup
           size="sm"
