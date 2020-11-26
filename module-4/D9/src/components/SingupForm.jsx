@@ -1,7 +1,18 @@
 import React from "react";
 import logo from "../netflix-logo.png";
-import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { Form, Row, Col, Button, Container, Alert } from "react-bootstrap";
 
+const rules = {
+  name: (value) => value.length > 2,
+  surname: (value) => value.length > 3,
+  password: (value) => {
+    const checkPassword = /^(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+    return checkPassword.test(value);
+  },
+
+  postalCode: (value) => value.length === 5 && !isNaN(value),
+  creditCard: (value) => value.length === 16 && !isNaN(value),
+};
 class SingupForm extends React.Component {
   state = {
     addInfo: {
@@ -13,8 +24,14 @@ class SingupForm extends React.Component {
       streetAddress: "",
       city: "",
       postalCode: "",
+      creditCard: "",
     },
-    submitState: false,
+
+    errName: "",
+    errSurname: "",
+    errPassword: "",
+    errPostal: "",
+    errCredit: "",
   };
 
   updateSingupField = (e) => {
@@ -26,38 +43,101 @@ class SingupForm extends React.Component {
     this.setState({ addInfo });
   };
 
-  // componentDidUpdate = (previousProps, previousState) => {
-
-  //   for()
-  // };
-
-  componentDidUpdate = (previousProps, previousState) => {
+  checkIfValid = () => {
+    let valid = true;
     for (let key in this.state.addInfo) {
-      if (
-        this.state.addInfo[key] !== "" &&
-        previousState.addInfo[key] !== this.state.addInfo[key]
-      ) {
-        this.setState({ submitState: true });
+      if (this.state.addInfo[key] === null || this.state.addInfo[key] === "") {
+        valid = false;
       }
     }
+    return valid;
   };
 
   submitInfo = (e) => {
     e.preventDefault();
+    const values = Object.values(this.state.addInfo);
+    console.log(values);
+    const keys = Object.keys(this.state.addInfo);
+    console.log(keys);
 
-    this.setState({
-      addInfo: {
-        name: "",
-        surname: "",
-        email: "",
-        password: "",
-        yearOfBirth: 2020,
-        streetAddress: "",
-        city: "",
-        postalCode: "",
-      },
-      submitState: false,
+    let errName = "";
+    let errSurname = "";
+    let errPassword = "";
+    let errPostal = "";
+    let errCredit = "";
+
+    let hasError = false;
+    values.forEach((value, index) => {
+      const keyOfCurrentValue = keys[index];
+      console.log("keyOf: ", keyOfCurrentValue);
+
+      if (keyOfCurrentValue === "name" && keyOfCurrentValue !== "error") {
+        let rule = rules[keyOfCurrentValue];
+        console.log("rule:", rule);
+
+        if (!(rule && rule(value))) {
+          errName = `Name needs to be more than 2 characters long`;
+          hasError = true;
+        }
+      } else if (
+        keyOfCurrentValue === "surname" &&
+        keyOfCurrentValue !== "error"
+      ) {
+        let rule = rules[keyOfCurrentValue];
+        console.log("rule:", rule);
+
+        if (!(rule && rule(value))) {
+          errSurname = `Surname needs to be more than 3 characters long`;
+          hasError = true;
+        }
+      } else if (
+        keyOfCurrentValue === "password" &&
+        keyOfCurrentValue !== "error"
+      ) {
+        let rule = rules[keyOfCurrentValue];
+        console.log("rule:", rule);
+
+        if (!(rule && rule(value))) {
+          errPassword = `Password must be at least 8 character long, at least one letter and one number `;
+          hasError = true;
+        }
+      } else if (
+        keyOfCurrentValue === "postalCode" &&
+        keyOfCurrentValue !== "error"
+      ) {
+        let rule = rules[keyOfCurrentValue];
+        console.log("rule:", rule);
+
+        if (!(rule && rule(value))) {
+          errPostal = `Postal code must be 5 digits long `;
+          hasError = true;
+        }
+      } else if (
+        keyOfCurrentValue === "creditCard" &&
+        keyOfCurrentValue !== "error"
+      ) {
+        let rule = rules[keyOfCurrentValue];
+        console.log("rule:", rule);
+
+        if (!(rule && rule(value))) {
+          errCredit = `Credit card must be 16 digits long`;
+          hasError = true;
+        }
+      }
     });
+
+    if (!hasError) {
+      this.props.history.push("/sumbitedDetails");
+      this.props.onClick(this.state.addInfo);
+    } else {
+      this.setState({
+        errName,
+        errSurname,
+        errPassword,
+        errPostal,
+        errCredit,
+      });
+    }
   };
 
   render() {
@@ -66,20 +146,24 @@ class SingupForm extends React.Component {
         <div className="d-flex justify-content-center mb-5">
           <img src={logo} alt="netflix" width="200" />
         </div>
-        <div className="loginForm-bg mb-5">
+        <div className="loginForm-bg pb-5">
           <div className="loginForm">
             <Container>
               <Row>
                 <Col
-                  className="my-5 "
+                  className="my-5"
                   md={{ span: 8, offset: 2 }}
                   style={{
                     backgroundColor: "white",
                     borderRadius: "15px",
                     boxShadow:
                       "inset 7px 5px 8px #c7c5c5, inset -7px -5px 8px #c7c5c5",
+                    zIndex: 999,
                   }}
                 >
+                  <h2 className="text-dark text-center mt-3">
+                    Register on Striveflix
+                  </h2>
                   <Form
                     className="my-5 px-5 d-flex  justify-content-around"
                     onSubmit={this.submitInfo}
@@ -106,9 +190,11 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.name}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
+                        {this.state.errName.length > 0 && (
+                          <Alert variant="danger">{this.state.errName}</Alert>
+                        )}
                       </Col>
                       <Col md={5}>
                         <Form.Group>
@@ -124,12 +210,16 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.surname}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
+                        {this.state.errSurname.length > 0 && (
+                          <Alert variant="danger">
+                            {this.state.errSurname}
+                          </Alert>
+                        )}
                       </Col>
                     </Row>
-                    <Row style={{ width: "100%" }} className="mt-5">
+                    <Row style={{ width: "100%" }}>
                       <Col md={5}>
                         <Form.Group>
                           <Form.Label htmlFor="email" className="text-dark">
@@ -144,7 +234,6 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.email}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
                       </Col>
@@ -162,12 +251,16 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.password}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
+                        {this.state.errPassword.length > 0 && (
+                          <Alert variant="danger">
+                            {this.state.errPassword}
+                          </Alert>
+                        )}
                       </Col>
                     </Row>
-                    <Row style={{ width: "100%" }} className="mt-5">
+                    <Row style={{ width: "100%" }}>
                       <Col md={4}>
                         <Form.Group>
                           <Form.Label
@@ -186,7 +279,6 @@ class SingupForm extends React.Component {
                             required
                             value={this.state.addInfo.yearOfBirth}
                             onChange={this.updateSingupField}
-                            className="mt-4"
                           />
                         </Form.Group>
                       </Col>
@@ -206,12 +298,11 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.streetAddress}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
                       </Col>
                     </Row>
-                    <Row style={{ width: "100%" }} className="mt-5">
+                    <Row style={{ width: "100%" }}>
                       <Col md={6}>
                         <Form.Group>
                           <Form.Label htmlFor="city" className="text-dark">
@@ -225,7 +316,6 @@ class SingupForm extends React.Component {
                             value={this.state.addInfo.city}
                             onChange={this.updateSingupField}
                             required
-                            className="mt-4"
                           />
                         </Form.Group>
                       </Col>
@@ -245,23 +335,54 @@ class SingupForm extends React.Component {
                             required
                             value={this.state.addInfo.postalCode}
                             onChange={this.updateSingupField}
-                            className="mt-4"
                           />
                         </Form.Group>
+                        {this.state.errPostal.length > 0 && (
+                          <Alert variant="danger">{this.state.errPostal}</Alert>
+                        )}
+                      </Col>
+                    </Row>
+                    <Row style={{ width: "100%" }}>
+                      <Col md={6}>
+                        <Form.Group>
+                          <Form.Label
+                            htmlFor="creditCard"
+                            className="text-dark"
+                          >
+                            Credit Card
+                          </Form.Label>
+                          <Form.Control
+                            type="number"
+                            name="creditCard"
+                            id="creditCard"
+                            placeholder="XXXX-XXXX-XXXX-XXXX"
+                            value={this.state.addInfo.creditCard}
+                            onChange={this.updateSingupField}
+                          />
+                        </Form.Group>
+                        {this.state.errCredit.length > 0 && (
+                          <Alert variant="danger">{this.state.errCredit}</Alert>
+                        )}
                       </Col>
                     </Row>
 
-                    <Row className="flex justify-content-center mt-5">
-                      {this.state.submitState ? (
-                        <Button variant="danger" type="submit">
-                          Sing Up
-                        </Button>
-                      ) : (
-                        <Button variant="danger" type="submit" disabled>
-                          Sign Up
-                        </Button>
-                      )}
-                    </Row>
+                    <div className="d-flex justify-content-around w-100 mt-5">
+                      <Button
+                        variant="danger"
+                        type="submit"
+                        disabled={!this.checkIfValid()}
+                      >
+                        Sign Up
+                      </Button>
+                      <Button
+                        variant="info"
+                        onClick={() => {
+                          this.props.history.push("/home");
+                        }}
+                      >
+                        Already have an account
+                      </Button>
+                    </div>
                   </Form>
                 </Col>
               </Row>

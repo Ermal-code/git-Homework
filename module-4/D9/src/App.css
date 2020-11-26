@@ -43,12 +43,18 @@ body {
   width: 80%;
   margin: auto;
 }
-/*SEARCHBAR*/
 
-/*--- slide-out desktop google custom search (gcs) ---*/
 .loginForm-bg {
   position: relative;
-  height: 650px;
+  min-height: 1000px;
+  background-image: url("https://img5.goodfon.com/wallpaper/nbig/1/61/fon-netflix-logo-raduga-tsvet-fon-background-skachat-oboi-sk.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.loginForm-bg2 {
+  position: relative;
+  min-height: 600px;
   background-image: url("https://img5.goodfon.com/wallpaper/nbig/1/61/fon-netflix-logo-raduga-tsvet-fon-background-skachat-oboi-sk.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -60,11 +66,22 @@ body {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.103);
   box-shadow: inset 100px 100px 100px black, inset -100px -100px 100px black;
+  display: flex;
+  align-items: center;
 }
 .loginForm .row {
-  display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .loginForm-bg {
+    height: 1300px;
+  }
+}
+
+/*SEARCHBAR*/
+
+/*--- slide-out desktop google custom search (gcs) ---*/
 
 .searchBar {
   position: relative;
@@ -82,7 +99,7 @@ body {
   padding: 5px;
 }
 
-input {
+/* input {
   position: absolute;
   top: 0;
   left: 0;
@@ -95,7 +112,7 @@ input {
   font-size: 1em;
   border-radius: 20px;
   padding: 0 20px;
-}
+} */
 
 .fa {
   box-sizing: border-box;

@@ -3,25 +3,46 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import ShowDeatil from "./components/ShowDetail";
 import TvShows from "./components/TvShows";
 import SingupForm from "./components/SingupForm";
+import SubmitedDetails from "./components/SubmitedDetails";
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Route path="/" exact component={SingupForm} />
-        <Route path="/home" exact component={Home} />
-        <Route path="/details/:id" exact component={ShowDeatil} />
-        <Route path="/tvshows/:serie" exact component={TvShows} />
-        <Footer />
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    myInfo: {},
+  };
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <SingupForm
+                onClick={(myInfoObj) => this.setState({ myInfo: myInfoObj })}
+                {...props}
+              />
+            )}
+          />
+          <Route path="/home" exact component={Home} />
+          <Route path="/details/:id" exact component={ShowDeatil} />
+          <Route path="/tvshows/:serie" exact component={TvShows} />
+          <Route
+            path="/sumbitedDetails"
+            exact
+            render={(props) => (
+              <SubmitedDetails myInfo={this.state.myInfo} {...props} />
+            )}
+          />
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

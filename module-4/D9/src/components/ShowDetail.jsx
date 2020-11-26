@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import AddComment from "./AddComment";
 import CommentList from "./CommentList";
+import NavBar from "./NavBar";
 
 class ShowDeatil extends React.Component {
   state = {

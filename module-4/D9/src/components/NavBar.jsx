@@ -9,7 +9,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <Link className="navbar-brand my-1 mx-4" to="/">
+        <Link className="navbar-brand my-1 mx-4" to="/home">
           <img src={logo} width="125" alt="netflixLogo" />
         </Link>
 
@@ -17,9 +17,9 @@ class NavBar extends Component {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item mr-3 ">
               <Link
-                to="/"
+                to="/home"
                 className={
-                  this.props.location.pathname === "/"
+                  this.props.location.pathname === "/home"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -95,7 +95,9 @@ class NavBar extends Component {
               <Dropdown.Item href="#/action-5">Manage Profiles</Dropdown.Item>
               <Dropdown.Item href="#/action-6">Accounts</Dropdown.Item>
               <Dropdown.Item href="#/action-7">Back Office</Dropdown.Item>
-              <Dropdown.Item href="#/action-8">Sign out</Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/">Sign out</Link>
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
