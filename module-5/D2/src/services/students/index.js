@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
   }
 
   if (errors === true) {
-    res.status(400);
+    res.send("email is the same");
   } else {
     fs.writeFileSync(
       path.join(__dirname, "students.json"),
