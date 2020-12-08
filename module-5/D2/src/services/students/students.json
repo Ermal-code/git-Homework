@@ -1,30 +1,23 @@
 [
   {
+    "Name": "Ermal",
+    "Surname": "Asllani",
+    "Email": "ermal.aa@live.com",
+    "DateOfBirth": "16-11-1998",
+    "ID": "5026k6h5gkig8mpm5"
+  },
+  {
     "Name": "Lum",
     "Surname": "Asllani",
     "Email": "lum.aa@live.com",
-    "Date of Birth": "16-11-1998",
-    "ID": "5026k612kkig57nmp"
+    "DateOfBirth": "16-11-1998",
+    "ID": "5026k6280kig8nsup"
   },
   {
     "Name": "Orhan",
     "Surname": "Ors",
     "Email": "orhan@live.com",
-    "Date of Birth": "16-11-1998",
-    "ID": "5026k689kkig7giwe"
-  },
-  {
-    "Name": "Orhan",
-    "Surname": "Ors",
-    "Email": "orhan1@live.com",
-    "Date of Birth": "16-11-1998",
-    "ID": "5026k6gw8kig8g1mc"
-  },
-
-  {
-    "Name": "Ermal",
-    "Surname": "Asllani",
-    "Email": "orhan1@live.com",
-    "Date of Birth": "16-11-1998"
+    "DateOfBirth": "16-11-1998",
+    "ID": "5026k66awkig8oc09"
   }
 ]
