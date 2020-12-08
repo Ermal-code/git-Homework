@@ -16,11 +16,14 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const buffer = fs.readFileSync(path.join(__dirname, "students.json"));
   const studentsArray = JSON.parse(buffer.toString());
-  const student = studentsArray.filter(
-    (student) => student.ID === req.params.id
-  );
 
-  res.send(student);
+  const student = studentsArray.find((student) => student.ID === req.params.id);
+
+  if (!student) {
+    res.status(400).send("ID does not exist");
+  } else {
+    res.status(200).send(student);
+  }
 });
 
 router.post("/", (req, res) => {
@@ -38,7 +41,7 @@ router.post("/", (req, res) => {
   }
 
   if (errors === true) {
-    res.send("email is the same");
+    res.send("This email already exist in our database");
   } else {
     studentDB.push(newStudent);
     fs.writeFileSync(
