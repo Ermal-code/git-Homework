@@ -28,12 +28,11 @@ router.post("/", (req, res) => {
   const buffer = fs.readFileSync(path.join(__dirname, "students.json"));
   const studentDB = JSON.parse(buffer.toString());
   newStudent.ID = uniqid();
-  studentDB.push(newStudent);
 
   let errors = false;
 
   for (let i = 0; i < studentDB.length; i++) {
-    if (newStudent.email === studentDB[i].email) {
+    if (newStudent.Email === studentDB[i].Email) {
       errors = true;
     }
   }
@@ -41,6 +40,7 @@ router.post("/", (req, res) => {
   if (errors === true) {
     res.send("email is the same");
   } else {
+    studentDB.push(newStudent);
     fs.writeFileSync(
       path.join(__dirname, "students.json"),
       JSON.stringify(studentDB)
