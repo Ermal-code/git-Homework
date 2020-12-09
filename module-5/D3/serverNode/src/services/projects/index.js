@@ -69,7 +69,11 @@ router.post(
       .withMessage(
         "Description should be longer than 8 charcacters and shorter than 50 characters"
       ),
-    check("repoURL").exists().withMessage("Repo Url of project is required"),
+    check("repoURL")
+      .exists()
+      .withMessage("Repo Url of project is required")
+      .isURL()
+      .withMessage("This is not a correct URL"),
   ],
   (req, res, next) => {
     try {
@@ -120,7 +124,11 @@ router.put(
       .withMessage(
         "Description should be longer than 8 charcacters and shorter than 50 characters"
       ),
-    check("repoURL").exists().withMessage("Repo Url of project is required"),
+    check("repoURL")
+      .exists()
+      .withMessage("Repo Url of project is required")
+      .isURL()
+      .withMessage("This is not a correct URL"),
   ],
   (req, res, next) => {
     try {
