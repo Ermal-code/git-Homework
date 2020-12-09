@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const uniqid = require("uniqid");
 const { check, validationResult } = require("express-validator");
+const { findByID, addPropertyNoProject } = require("./utils");
 
 const router = express.Router();
 
@@ -78,8 +79,10 @@ router.post(
   (req, res, next) => {
     try {
       const errors = validationResult(req);
-
+      //   if (!findByID(req.body.studentID))
+      //     throw new Error("Student id is not valid");
       if (errors.isEmpty()) {
+        addPropertyNoProject(req.body.studentID);
         const projectDb = fileRead("projects.json");
         const newProject = {
           ...req.body,

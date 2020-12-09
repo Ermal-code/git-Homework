@@ -3,6 +3,7 @@ const { validationResult } = require("express-validator");
 const fs = require("fs");
 const path = require("path");
 const uniqid = require("uniqid");
+const { studentProjects } = require("../projects/utils");
 
 const router = express.Router();
 
@@ -31,11 +32,12 @@ router.post("/", (req, res) => {
   const buffer = fs.readFileSync(path.join(__dirname, "students.json"));
   const studentDB = JSON.parse(buffer.toString());
   newStudent.ID = uniqid();
+  console.log(studentDB);
 
   let errors = false;
 
   for (let i = 0; i < studentDB.length; i++) {
-    if (newStudent.Email === studentDB[i].Email) {
+    if (newStudent.email === studentDB[i].email) {
       errors = true;
     }
   }
@@ -93,6 +95,17 @@ router.delete("/:id", (req, res) => {
       JSON.stringify(newStudentDB)
     );
     res.status(204).send();
+  }
+});
+
+// students Projects
+
+router.get("/:id/projects", (req, res) => {
+  const projects = studentProjects(req.params.id);
+  if (!projects) {
+    res.status(400).send("ID does not exist");
+  } else {
+    res.status(200).send(projects);
   }
 });
 
