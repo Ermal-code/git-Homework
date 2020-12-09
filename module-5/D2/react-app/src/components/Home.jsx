@@ -121,7 +121,7 @@ class Home extends React.Component {
                 studentObj={this.state.editStudent}
                 clearStudentObj={() =>
                   this.setState({
-                    editStudent: { studentObj: {}, editCounter: 0 },
+                    editStudent: { studentobject: {}, editCounter: 0 },
                   })
                 }
               />
