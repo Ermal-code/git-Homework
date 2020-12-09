@@ -15,7 +15,16 @@ const fileRead = (fileName) => {
 router.get("/", (req, res, next) => {
   try {
     const projectDb = fileRead("projects.json");
-    res.status(200).send(projectDb);
+    if (req.query && req.query.name) {
+      const filteredData = projectDb.filter(
+        (project) =>
+          project.hasOwnProperty("name") &&
+          project.name.toLowerCase() === req.query.name.toLowerCase()
+      );
+      res.status(200).send(filteredData);
+    } else {
+      res.status(200).send(projectDb);
+    }
   } catch (error) {
     console.log(error);
     next(error);
@@ -25,6 +34,7 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   try {
     const projectDb = fileRead("projects.json");
+
     const filteredData = projectDb.find(
       (project) => project.ID === req.params.id
     );
