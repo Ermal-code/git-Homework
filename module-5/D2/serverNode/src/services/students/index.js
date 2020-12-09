@@ -63,12 +63,17 @@ router.put("/:id", (req, res) => {
   modifiedStudent.ID = req.params.id;
   newStudentDB.push(modifiedStudent);
 
+  let errorHandle = studentDB.find((student) => student.ID === req.params.id);
+
   fs.writeFileSync(
     path.join(__dirname, "students.json"),
     JSON.stringify(newStudentDB)
   );
-
-  res.status(201).send(newStudentDB);
+  if (!errorHandle) {
+    res.status(400).send("ID does not exist");
+  } else {
+    res.status(201).send(newStudentDB);
+  }
 });
 
 router.delete("/:id", (req, res) => {
@@ -77,12 +82,18 @@ router.delete("/:id", (req, res) => {
   const newStudentDB = studentDB.filter(
     (student) => student.ID !== req.params.id
   );
-  fs.writeFileSync(
-    path.join(__dirname, "students.json"),
-    JSON.stringify(newStudentDB)
-  );
 
-  res.status(204).send();
+  let errorHandle = studentDB.find((student) => student.ID === req.params.id);
+
+  if (!errorHandle) {
+    res.status(400).send("ID does not exist");
+  } else {
+    fs.writeFileSync(
+      path.join(__dirname, "students.json"),
+      JSON.stringify(newStudentDB)
+    );
+    res.status(204).send();
+  }
 });
 
 module.exports = router;
