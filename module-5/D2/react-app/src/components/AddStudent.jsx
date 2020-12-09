@@ -41,15 +41,7 @@ class AddStudent extends React.Component {
     let url = `http://localhost:3002/students`;
     try {
       let response;
-      if (!this.props.studentObj.studentobject.ID) {
-        response = await fetch(url, {
-          method: "POST",
-          body: JSON.stringify(this.state.student),
-          headers: new Headers({
-            "Content-Type": "application/json",
-          }),
-        });
-      } else {
+      if (this.props.studentObj.studentobject.hasOwnProperty("ID")) {
         response = await fetch(
           url + "/" + this.props.studentObj.studentobject.ID,
           {
@@ -60,14 +52,22 @@ class AddStudent extends React.Component {
             }),
           }
         );
+      } else {
+        response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(this.state.student),
+          headers: new Headers({
+            "Content-Type": "application/json",
+          }),
+        });
       }
 
       if (response.ok) {
         alert(
           `Student ${
-            this.props.studentObj.studentobject.ID === undefined
-              ? "Added"
-              : "Edited"
+            this.props.studentObj.studentobject.hasOwnProperty("ID")
+              ? "Edited"
+              : "Added"
           }`
         );
         this.props.clearStudentObj();
